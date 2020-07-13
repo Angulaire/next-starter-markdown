@@ -1,0 +1,14 @@
+{
+  "title": "Angulaire | Our work is serious, we are not",
+  "description": "We build products close to our hearts, and put everything we’ve got into them, so the final products we deliver speak for themselves.",
+  "ogType": "website",
+  "slug": "/",
+  "sections": [
+    {
+      "template": "hero",
+      "title": "Quickstart awesome websites",
+      "image": "/v1594654974/build_yvxj3b.png",
+      "alt": "People climbing a ladder"
+    }
+  ]
+}
