@@ -1,9 +1,10 @@
 /** @jsx jsx */
-import { jsx, Grid, Flex, Heading, Image, Tag } from '@chakra-ui/core';
+import { jsx } from '@chakra-ui/system';
+import { Grid, Flex, Heading, Image, Tag } from '@chakra-ui/core';
 import Link from 'next-translate/Link';
 import { Card } from 'components/common/Card';
 
-export default ({ article }) => {
+export default function ArticleCard({ article }) {
   return (
     <Card as="article" variant="animated">
       <Link href="/blog/[slug]" as={`/blog/${article.slug}`}>

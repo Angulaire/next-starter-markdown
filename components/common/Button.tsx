@@ -1,32 +1,52 @@
-import { chakra } from '@chakra-ui/core';
+import { Box, useStyleConfig } from '@chakra-ui/core';
 
-export const Button = chakra("button", {
+const styleConfig = {
   baseStyle: {
-    borderRadius: "md",
-    p: "10px 25px",
-    fontWeight: "bold",
-    textTransform: "uppercase",
-    transition: "all 0.2s",
+    borderRadius: 'default',
+    fontWeight: 'bold',
+    transition: 'all 0.2s'
   },
   sizes: {
+    default: {
+      px: '25px',
+      py: '10px'
+    },
     small: {
-      paddingX: "18px",
-      paddingY: "12px",
-      fontSize: "14px",
+      px: '18px',
+      py: '12px',
+      fontSize: 'sm'
     },
     large: {
-      paddingX: "24px",
-      paddingY: "16px",
-      fontSize: "18px",
+      px: '24px',
+      py: '16px',
+      fontSize: 'lg'
     },
   },
   variants: {
     primary: {
-      bg: "black",
-      color: "white",
+      bg: 'black',
+      color: 'white'
     },
-    icon: {
-      bg: 'transparent'
+    outline: {
+      border: '1px solid'
+    },
+    link: {
+      color: 'black',
+      transition: 'all .2s ease',
+      '&:hover': {
+        opacity: .6
+      }
     }
   },
-})
+}
+
+export const Button = ({ size='default', variant='primary', ...rest }) => {
+
+  const styles: any = useStyleConfig('Button', {
+    size,
+    variant,
+    styleConfig,
+  })
+
+  return <Box as="button" sx={styles} {...rest} />
+}

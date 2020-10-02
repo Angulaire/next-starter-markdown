@@ -1,44 +1,42 @@
-import { chakra } from '@chakra-ui/core'
+import { Box, useStyleConfig } from '@chakra-ui/core';
 
-export const Container = chakra("section", {
+const styleConfig = {
   sizes: {
     default: {
-      py: [10, 60],
-      px: [5, 90],
+      py: [8, 8],
+      px: [5, 24]
     },
     large: {
-      py: [10, 90],
-      px: 0
+      py: [8, 8],
+      px: [5, 20]
     },
-    center: {
-      py: [10, 60],
-      px: [5, 200]
+    largePY0: {
+      px: [5, 20]
     },
-    header: {
-      py: 0,
-      px: [5, 90]
-    },
-    footer: {
-      px: [5, 90],
-      pt: [10, 20],
-      pb: [5]
-    }
   },
   variants: {
     header: {
       zIndex: 'navigation',
-      bg: 'white',
-      width: '100%',
       position: 'fixed',
       top: 0,
-      height: 80,
+      width: '100%',
+      height: '80px',
       transition: '0.8s cubic-bezier(0.2, 0.8, 0.2, 1)'
     },
     footer: {
-      bg: 'white'
+      bg: 'white',
+      zIndex: 'navigation',
     }
   }
-})
-Container.defaultProps = {
-  size: "default"
+}
+
+export const Container = ({ size='default', variant='primary', ...rest }) => {
+
+  const styles: any = useStyleConfig('Button', {
+    size,
+    variant,
+    styleConfig,
+  })
+
+  return <Box sx={styles} {...rest} />
 }

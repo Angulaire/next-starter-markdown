@@ -1,5 +1,6 @@
 /** @jsx jsx */
-import { jsx } from '@chakra-ui/core';
+import { jsx } from '@chakra-ui/system';
+import Head from 'next/head';
 import { useRouter } from 'next/router'
 import { NextSeo } from 'next-seo';
 import Header from 'components/layout/Header';
@@ -15,11 +16,15 @@ type LayoutProps = {
   children: React.ReactNode;
 }
 
-export default ({ header = <Header />, children, seo }: LayoutProps) => {
+export default function Layout({ header = <Header />, children, seo }: LayoutProps) {
   const { asPath } = useRouter()
 
   return (
     <>
+      <Head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <NextSeo
         title={seo.title}
         description={seo.description}
@@ -36,7 +41,7 @@ export default ({ header = <Header />, children, seo }: LayoutProps) => {
         }}
       />
       {header}
-      <main sx={{ mt: 80 }}>
+      <main sx={{ mt: '80px', minHeight: '80vh'}}>
         {children}
       </main>
       <Footer />

@@ -1,12 +1,13 @@
 /** @jsx jsx */
+import { jsx } from '@chakra-ui/system';
+import { Flex, Heading, Text } from '@chakra-ui/core';
 import { GetStaticPaths, GetStaticProps } from 'next';
 import { getAllArticles, getArticleBySlug } from 'lib/api';
-import { jsx, Flex, Heading, Text } from '@chakra-ui/core';
 import ReactMarkdown from 'react-markdown';
 import Layout from 'components/layout/Layout';
 import { Container } from 'components/layout/Container';
 
-export default ({ article }) => {
+export default function ArticlePage({ article }) {
   return (
     <Layout
       seo={{

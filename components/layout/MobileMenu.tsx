@@ -1,3 +1,5 @@
+/** @jsx jsx */
+import { jsx } from '@chakra-ui/system';
 import {
   Flex,
   List,
@@ -10,13 +12,13 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
-} from "@chakra-ui/core"
+} from '@chakra-ui/core';
 import { Button } from 'components/common/Button';
 import Link from 'next-translate/Link';
 import { AiOutlineMenu } from 'react-icons/ai';
 
 
-export default ({ logo, links }) => {
+export default function MobileMenu({ logo, links }) {
   const { isOpen, onOpen, onClose } = useDisclosure()
 
   return (

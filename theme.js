@@ -1,42 +1,57 @@
-import chakraTheme from 'chakra';
-
 export default {
-  ...chakraTheme,
-  breakpoints: ["30em", "48em", "62em", "80em"],
-  space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
-  fonts: {
-    body: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
-    heading: '"Geomanist"',
-    monospace: 'Menlo, monospace',
-  },
-  fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 96],
-  fontWeights: {
-    body: 400,
-    heading: 700,
-    bold: 700,
-  },
-  lineHeights: {
-    body: 1.5,
-    heading: 1.125,
-  },
   colors: {
-    ...chakraTheme.colors,
     grey: '#FAFAFA',
     primary: '#07C',
     secondary: '#30C'
   },
+  fonts: {
+    body: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
+    heading: 'inherit',
+  },
+  fontSizes: {
+    xs: "12px",
+    sm: "14px",
+    md: "16px",
+    lg: "18px",
+    xl: "20px",
+    "2xl": "24px",
+    "3xl": "28px",
+    "4xl": "36px",
+    "5xl": "48px",
+    "6xl": "64px",
+  },
+  fontWeights: {
+    normal: 400,
+    medium: 500,
+    bold: 700,
+  },
+  lineHeights: {
+    normal: "normal",
+    none: "1",
+    shorter: "1.25",
+    short: "1.375",
+    base: "1.5",
+    tall: "1.625",
+    taller: "2",
+  },
+  letterSpacings: {
+    tighter: "-0.05em",
+    tight: "-0.025em",
+    normal: "0",
+    wide: "0.025em",
+    wider: "0.05em",
+    widest: "0.1em",
+  },
   shadows :{
-    ...chakraTheme.shadows,
     primary: '0 5px 10px rgba(0,0,0,.12)',
-    primaryHover: '0 8px 30px rgba(0,0,0,.12)'
+    primaryHover: '0 8px 30px rgba(0,0,0,.12)',
+    outline: 'transparent'
   },
   radii: {
-    ...chakraTheme.radii,
     default: '5px',
     full: '100px'
   },
   sizes: {
-    ...chakraTheme.space,
     full: "100%",
     "3xs": "14rem",
     "2xs": "16rem",
@@ -73,48 +88,41 @@ export default {
     "64": "16rem",
   },
   zIndices: {
-    navigation: 10,
-    modal: 100
+    navigation: 1,
+    modal: 10
   },
   styles: {
     global: {
-      '@font-face': {
-        fontFamily: '"Geomanist"',
-        src: 'url(/fonts/Geomanist-Bold.woff) format("woff2")',
+      "html, body": {
+        fontSize: 'md',
+        bg: 'grey',
+        lineHeight: 'tall',
       },
-      height: '100%', '#__next': { height: '100%' },
-      display: 'flex',
-      flexDirection: 'column',
-      bg: 'grey',
       'h1, h2, h3, h4, h5, h6': {
         fontFamily: 'heading',
         fontWeight: 'heading',
         lineHeight: 'heading',
         color: 'black'
       },
-      'h1': {
-        fontSize: [7, 8],
+      h1: {
+        fontSize: ['4xl', '5xl'],
       },
-      'h2': {
-        fontSize: [6, 7],
+      h2: {
+        fontSize: ['3xl', '4xl'],
       },
-      'h3': {
-        fontSize: [5, 6],
+      h3: {
+        fontSize: ['2xl', '3xl'],
       },
-      'h4': {
-        fontSize: [4, 5],
+      h4: {
+        fontSize: ['xl', '2xl'],
       },
-      'h5': {
-        fontSize: [3, 4],
+      h5: {
+        fontSize: ['lg', 'xl'],
       },
-      'h6': {
-        fontSize: [2, 3],
+      h6: {
+        fontSize: ['md', 'lg'],
       },
-      'p': {
-        fontSize: 2,
-        color: '#333'
-      },
-      'a': {
+      a: {
         color: '#333',
         cursor: 'pointer',
         transition: 'all .2s ease',

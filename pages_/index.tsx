@@ -2,7 +2,7 @@ import Layout from 'components/layout/Layout';
 import Hero from 'components/common/Hero';
 import { useTranslation } from 'next-translate';
 
-export default () => {
+export default function Homepage() {
   const { t, lang } = useTranslation()
   const sections = t('home:sections', {}, { returnObjects: true })
 

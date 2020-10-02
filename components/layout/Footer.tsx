@@ -1,13 +1,14 @@
 /** @jsx jsx */
-import { jsx, Grid, Flex, IconButton, Text, List, ListItem } from "@chakra-ui/core";
-import { Angulaire } from 'components/common/Logos';
+import { jsx } from '@chakra-ui/system';
+import { Grid, Flex, IconButton, Text, List, ListItem } from '@chakra-ui/core';
+import { Angulaire } from 'components/common/Logo';
 import { Container }from 'components/layout/Container';
 import Link from 'next-translate/Link';
 import { AiFillFacebook, AiFillTwitterSquare, AiFillLinkedin } from 'react-icons/ai';
 import useTranslation from 'next-translate/useTranslation';
 import siteConfig from 'siteconfig.json';
 
-export default () => {
+export default function Footer() {
   const { t, lang } = useTranslation()
   const categories = t('global:footer.categories', {}, { returnObjects: true })
   const logos = {
@@ -17,7 +18,7 @@ export default () => {
   };
 
   return (
-    <Container as="footer" size="footer" variant="footer">
+    <Container as="footer" size="large" variant="footer">
       <Grid gridTemplateColumns={['1fr', '3fr 5fr',]} gridGap={[10]} mb={[10, 5]}>
         <div>
           <div>

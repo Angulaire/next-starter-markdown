@@ -1,5 +1,6 @@
 /** @jsx jsx */
-import { jsx, Grid, Flex, Heading } from '@chakra-ui/core';
+import { jsx } from '@chakra-ui/system';
+import { Grid, Flex, Heading } from '@chakra-ui/core';
 import Layout from 'components/layout/Layout';
 import { Container } from 'components/layout/Container';
 import { Card } from 'components/common/Card';
@@ -8,7 +9,7 @@ import { useTranslation } from 'next-translate';
 import ReactMarkdown from 'react-markdown';
 import siteConfig from 'siteconfig.json';
 
-export default () => {
+export default function ContactPage() {
   const { t, lang } = useTranslation()
   const sections = t('contact:sections', {}, { returnObjects: true })
 
@@ -37,7 +38,7 @@ export default () => {
                   </div>
                 </Flex>
                 <Flex justifyContent="center" alignItems="center">
-                  <Card size="withPadding" width="100%">
+                  <Card width="100%">
                     <ContactForm />
                   </Card>
                 </Flex>

@@ -2,7 +2,7 @@ import { Grid } from '@chakra-ui/core';
 import ArticleCard from 'components/common/ArticleCard';
 import { Container } from 'components/layout/Container';
 
-export default ({ articles }) => {
+export default function ArticlesGrid({ articles }) {
   return (
     <Container>
       <Grid gridTemplateColumns={['1fr', 'repeat(3, 1fr)']} gridGap={10}>

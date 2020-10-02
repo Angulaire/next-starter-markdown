@@ -1,24 +1,30 @@
-import { chakra } from '@chakra-ui/core';
+import { Box, useStyleConfig } from '@chakra-ui/core';
 
-export const Card = chakra("div", {
+const styleConfig = {
   baseStyle: {
     bg: 'white',
     borderRadius: 'default',
-    overflow: 'hidden',
-    boxShadow: 'primary',
     transition: 'transform .2s ease-in-out, box-shadow .2s ease-in-out',
   },
-  sizes: {
-    withPadding: {
-      p: 8
-    }
-  },
   variants: {
+    default: {
+      boxShadow: 'primary',
+    },
     animated: {
       _hover: {
         boxShadow: 'primaryHover',
         transform: 'translateY(-3px)'
-      }
-    }
+      },
+    },
   },
-})
+}
+
+export const Card = ({ variant="default", ...rest }) => {
+
+  const styles: any = useStyleConfig("Card", {
+    variant,
+    styleConfig,
+  })
+
+  return <Box sx={styles} {...rest} />
+}

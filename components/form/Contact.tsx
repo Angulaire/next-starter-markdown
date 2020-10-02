@@ -5,7 +5,7 @@ import { Button } from 'components/common/Button';
 import { useForm, Controller }from 'react-hook-form';
 import React, { useState } from 'react';
 
-export default () => {
+export default function Contact() {
   const [status, setStatus] = useState({
     submitted: false,
     submitting: false,

@@ -1,7 +1,7 @@
 {
   "name": "angulaire-next-starter",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Forestry & Next",
+  "description": "A simple starter to get up and developing quickly with Next.js",
   "license": "MIT",
   "version": "0.1.0",
   "author": "@arnaudjnn",
@@ -14,7 +14,9 @@
     "forestry-preview": "next -p 8080 -H 0.0.0.0"
   },
   "dependencies": {
-    "@chakra-ui/core": "^1.0.0-next.4",
+    "@artsy/fresnel": "^1.2.2",
+    "@chakra-ui/core": "^1.0.0-rc.5",
+    "@chakra-ui/system": "^1.0.0-next.3",
     "gray-matter": "^4.0.2",
     "next": "latest",
     "next-seo": "^4.7.1",
