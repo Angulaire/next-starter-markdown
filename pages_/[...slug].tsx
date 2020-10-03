@@ -20,7 +20,7 @@ export default function DynamicPage({ globalData, pageData }) {
   }
 
   return (
-    <Layout metadata={pageData.metadata} >
+    <Layout metadata={pageData.metadata}>
       {pageData.sections.map(section => {
         if (section.template === 'hero'){
           return (
@@ -122,6 +122,7 @@ export const getStaticProps: GetStaticProps = async (ctx: any) => {
         'description',
         'coverImage',
         'slug',
+        'content',
         'date',
         'category',
         'author'

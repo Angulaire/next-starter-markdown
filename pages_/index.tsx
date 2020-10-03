@@ -1,7 +1,6 @@
 import { GetStaticProps } from 'next';
 import Layout from 'components/layout/Layout';
 import Hero from 'components/sections/Hero';
-import { useTranslation } from 'next-translate';
 
 export default function Homepage({ globalData, pageData }) {
   return (
@@ -10,6 +9,7 @@ export default function Homepage({ globalData, pageData }) {
         if (section.template === 'hero'){
           return (
             <Hero 
+              key={section.template}
               title={section.title}
               image={section.image}
               alt={section.alt}

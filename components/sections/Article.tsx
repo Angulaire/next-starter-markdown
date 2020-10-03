@@ -10,7 +10,7 @@ export default function Article({ title, category, date, content, coverImage }) 
   const localeDate = new Intl.DateTimeFormat(lang).format(new Date(date))
 
   return (
-    <Container as="article" size="center" textAlign="center">
+    <Container as="article" size="default">
       <div sx={{ display: 'grid', gridTemplateColumns: '1fr 1fr'}}>
         <Flex justifyContent="flex-end" px={5}>
           <Text fontWeight="bold">{category}</Text>

@@ -24,26 +24,26 @@ export default function Footer() {
           <div>
             <Angulaire width="10rem"/>
           </div>
-          <Text mt={2}>{t('global:footer.headline')}</Text>
+          <Text mt="8" fontSize="sm">{t('global:footer.headline')}</Text>
         </div>
         <Grid gridTemplateColumns={['repeat(2, 1fr)', 'repeat(3, 1fr)',]} gridGap={4}>
           {categories.map((category, index) => (
             <div key={index}>
-              <Text as="h6" mb={4}>{category.title}</Text>
-              <div sx={{ p: 0 }}>
-                <List>
-                  {category.links.map((link, index) => (
-                    <ListItem key={index}>
-                      <Link href={link.url}>{link.text}</Link>
-                    </ListItem>
-                  ))}
-                </List>
-              </div>
+              <Text as="h6" mb="5">{category.title}</Text>
+              <List>
+                {category.links.map((link, i) => (
+                  <ListItem key={i} mb="1">
+                    <Link href={link.url}>
+                      <a>{link.text}</a>
+                    </Link>
+                  </ListItem>
+                ))}
+              </List>
             </div>
           ))}
         </Grid>
       </Grid>
-      <Grid gridTemplateColumns={['1fr', '1fr 1fr',]} mb={3}>
+      <Grid gridTemplateColumns={['1fr', '1fr 1fr',]}>
         <Flex alignItems="flex-end" justifyContent={['center', 'flex-start']} order={[2, 1]}>
           <Text fontSize="xs">Copyright © 2020 Angulaire All rights reserved.</Text>
         </Flex>

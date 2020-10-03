@@ -1,3 +1,50 @@
+const textStyles =  {
+  h1: {
+    fontSize: ['4xl', '5xl'],
+    fontWeight: 'bold',
+    lineHeight: '110%',
+    letterSpacing: '-2%',
+  },
+  h2: {
+    fontSize: ['3xl', '4xl'],
+    fontWeight: 'semibold',
+    lineHeight: '110%',
+    letterSpacing: '-2%',
+  },
+  h3: {
+    fontSize: ['2xl', '3xl'],
+    fontWeight: 'semibold',
+    lineHeight: '110%',
+    letterSpacing: '-2%',
+  },
+  h4: {
+    fontSize: ['xl', '2xl'],
+    fontWeight: 'semibold',
+    lineHeight: '110%',
+    letterSpacing: '-2%',
+  },
+  h5: {
+    fontSize: ['lg', 'xl'],
+    fontWeight: 'semibold',
+    lineHeight: '110%',
+    letterSpacing: '-2%',
+  },
+  h6: {
+    fontSize: ['md', 'lg'],
+    fontWeight: 'semibold',
+    lineHeight: '110%',
+    letterSpacing: '-2%',
+  },
+  a: {
+    color: '#333',
+    cursor: 'pointer',
+    transition: 'all .2s ease',
+    '&:hover': {
+      color: 'black'
+    }
+  }
+}
+
 export default {
   colors: {
     grey: '#FAFAFA',
@@ -91,9 +138,11 @@ export default {
     navigation: 1,
     modal: 10
   },
+  textStyles,
   styles: {
     global: {
-      "html, body": {
+      ...textStyles,
+      'html, body': {
         fontSize: 'md',
         bg: 'grey',
         lineHeight: 'tall',
@@ -103,24 +152,6 @@ export default {
         fontWeight: 'heading',
         lineHeight: 'heading',
         color: 'black'
-      },
-      h1: {
-        fontSize: ['4xl', '5xl'],
-      },
-      h2: {
-        fontSize: ['3xl', '4xl'],
-      },
-      h3: {
-        fontSize: ['2xl', '3xl'],
-      },
-      h4: {
-        fontSize: ['xl', '2xl'],
-      },
-      h5: {
-        fontSize: ['lg', 'xl'],
-      },
-      h6: {
-        fontSize: ['md', 'lg'],
       },
       a: {
         color: '#333',

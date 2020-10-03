@@ -1,7 +1,8 @@
 /** @jsx jsx */
 import { jsx } from '@chakra-ui/system';
 import { Grid, Flex, List, ListItem } from '@chakra-ui/core';
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
+import { Media } from 'components/layout/Media';
 import { Container } from 'components/layout/Container';
 import { Button } from 'components/common/Button';
 import { Angulaire } from 'components/common/Logo';
@@ -41,14 +42,9 @@ export default function Header() {
             <Logo />
           </a>
         </Flex>
-        <Flex alignItems="center" justifyContent="center" display={['none', 'inherit']}>
-          <div>
-            <List sx={{
-              'li': {
-                display: 'inline-block',
-                mb: 0
-              }
-            }}>
+        <Flex alignItems="center" justifyContent="center">
+          <Media greaterThan="xs">
+            <List display="flex">
               {links.map(link => (
                 <ListItem key={link.url}>
                   <Link href={link.url}>
@@ -57,14 +53,14 @@ export default function Header() {
                 </ListItem>
               ))}
             </List>
-          </div>
+          </Media>
         </Flex>
         <Flex alignItems="center" justifyContent="flex-end">
           <LangSelect />
+          <Media at="xs">
+            <MobileMenu logo={<Logo />} links={links}/>
+          </Media>
         </Flex>
-        <div sx={{ display: ['flex', 'none'], alignItems: 'center', justifyContent: 'center' }}>
-          <MobileMenu logo={<Logo />} links={links}/>
-        </div >
       </Grid>
     </Container>
   );

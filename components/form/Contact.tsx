@@ -1,5 +1,4 @@
-/** @jsx jsx */
-import { jsx, Grid, Flex, HStack, FormControl, FormLabel, FormErrorMessage, Input, Textarea, Alert, AlertIcon, AlertTitle, AlertDescription } from '@chakra-ui/core';
+import { Box, Grid, Flex, HStack, FormControl, FormLabel, FormErrorMessage, Input, Textarea, Alert, AlertIcon, AlertTitle, AlertDescription } from '@chakra-ui/core';
 import Select from 'react-select';
 import { Button } from 'components/common/Button';
 import { useForm, Controller }from 'react-hook-form';
@@ -42,7 +41,6 @@ export default function Contact() {
     const text = await res.text()
     handleResponse(res.status, text)
   };
-  console.log('Failed:', errors);
 
   const ItemExplain = {
     color: 'red',
@@ -156,13 +154,15 @@ export default function Contact() {
               {errors.needs && "Please enter your message"}
             </FormErrorMessage>
           </FormControl>
-          <Button variant="primary" onClick={handleSubmit(onSubmit)} width="100%">
-            {!status.submitting
-              ? !status.submitted
-                ? 'Request a demo'
-                : 'Request sent'
-              : 'Sending...'}
-          </Button>
+          <Box mt="5">
+            <Button variant="primary" onClick={handleSubmit(onSubmit)} width="100%">
+              {!status.submitting
+                ? !status.submitted
+                  ? 'Request a demo'
+                  : 'Request sent'
+                : 'Sending...'}
+            </Button>
+          </Box>
         </form>
       ) : (
         <Alert
