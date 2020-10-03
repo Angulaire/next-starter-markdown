@@ -3,7 +3,6 @@ import { jsx } from '@chakra-ui/system';
 import Head from 'next/head';
 import { useRouter } from 'next/router'
 import { NextSeo } from 'next-seo';
-import Header from 'components/layout/Header';
 import Footer from 'components/layout/Footer';
 
 type LayoutProps = {
@@ -16,7 +15,7 @@ type LayoutProps = {
   children: React.ReactNode;
 }
 
-export default function Layout({ header = <Header />, children, metadata }: LayoutProps) {
+export default function Layout({ header, children, metadata }: LayoutProps) {
   const { asPath } = useRouter()
 
   return (

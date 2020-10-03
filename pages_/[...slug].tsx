@@ -4,12 +4,20 @@ import { useRouter } from 'next/router';
 import ErrorPage from 'next/error';
 import Layout from 'components/layout/Layout';
 import Hero from 'components/sections/Hero';
+import Header from 'components/layout/Header';
 import Contact from 'components/sections/Contact';
 import ArticlesGrid from 'components/common/ArticlesGrid';
 import Article from 'components/sections/Article';
+import useTranslation from 'next-translate/useTranslation';
 
 export default function DynamicPage({ globalData, pageData }) {
   const router = useRouter()
+
+  // Use globalData when translations come from CMS
+  const { t } = useTranslation()
+  const menu = {
+    links: t('global:header.links', {}, { returnObjects: true })
+  }
 
   if (!router.isFallback && !pageData?.sections.length) {
     return <ErrorPage statusCode={404} />;
@@ -20,7 +28,10 @@ export default function DynamicPage({ globalData, pageData }) {
   }
 
   return (
-    <Layout metadata={pageData.metadata}>
+    <Layout 
+      metadata={pageData.metadata}
+      header={<Header menu={menu}/>}
+    >
       {pageData.sections.map(section => {
         if (section.template === 'hero'){
           return (

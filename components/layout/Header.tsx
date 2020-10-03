@@ -6,15 +6,22 @@ import { Media } from 'components/layout/Media';
 import { Container } from 'components/layout/Container';
 import { Button } from 'components/common/Button';
 import { Angulaire } from 'components/common/Logo';
-import useTranslation from 'next-translate/useTranslation';
 import Link from 'next-translate/Link';
 import LangSelect from 'components/common/LangSelect';
 import MobileMenu from 'components/layout/MobileMenu';
 
-export default function Header() {
+type HeaderProps = {
+  menu: {
+    links: {
+      url: string
+      text: string
+      targetBlank: boolean
+    }[]
+  }
+}
+
+export default function Header({ menu }: HeaderProps) {
   const [scrollTop, setScrollTop] = useState(0);
-  const { t, lang } = useTranslation()
-  const links = t('global:header.links', {}, { returnObjects: true })
   const Logo = Angulaire
 
   useEffect(() => {
@@ -38,14 +45,16 @@ export default function Header() {
     >
         <Grid gridTemplateColumns={['60% repeat(2, auto)', '1fr 2fr 1fr']} height="100%">
         <Flex alignItems="center" justifyContent="flex-start">
-          <a href="/">
-            <Logo />
-          </a>
+          <Link href="/">
+            <a>
+              <Logo />
+            </a>
+          </Link>
         </Flex>
         <Flex alignItems="center" justifyContent="center">
           <Media greaterThan="xs">
             <List display="flex">
-              {links.map(link => (
+              {menu.links.map(link => (
                 <ListItem key={link.url}>
                   <Link href={link.url}>
                     <Button variant="link">{link.text}</Button>
@@ -58,7 +67,7 @@ export default function Header() {
         <Flex alignItems="center" justifyContent="flex-end">
           <LangSelect />
           <Media at="xs">
-            <MobileMenu logo={<Logo />} links={links}/>
+            <MobileMenu logo={<Logo />} links={menu.links}/>
           </Media>
         </Flex>
       </Grid>

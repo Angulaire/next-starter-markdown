@@ -1,10 +1,22 @@
 import { GetStaticProps } from 'next';
 import Layout from 'components/layout/Layout';
+import Header from 'components/layout/Header';
 import Hero from 'components/sections/Hero';
+import useTranslation from 'next-translate/useTranslation';
 
 export default function Homepage({ globalData, pageData }) {
+
+  // Use globalData when translations come from CMS
+  const { t } = useTranslation()
+  const menu = {
+    links: t('global:header.links', {}, { returnObjects: true })
+  }
+
   return (
-    <Layout metadata={pageData.metadata}>
+    <Layout 
+      metadata={pageData.metadata}
+      header={<Header menu={menu}/>}
+    >
       {pageData.sections.map(section => {
         if (section.template === 'hero'){
           return (

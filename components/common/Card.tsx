@@ -4,7 +4,8 @@ const styleConfig = {
   baseStyle: {
     bg: 'white',
     borderRadius: 'default',
-    p: 5,
+    display: 'flex', 
+    flexDirection: 'column',
     transition: 'transform .2s ease-in-out, box-shadow .2s ease-in-out',
   },
   variants: {
@@ -18,12 +19,21 @@ const styleConfig = {
       },
     },
   },
+  sizes: {
+    default: {
+      p: 5
+    },
+    defaultP0: {
+      p: 0
+    }
+  }
 }
 
-export const Card = ({ variant="default", ...rest }) => {
+export const Card = ({ variant="default", size="default", ...rest }) => {
 
   const styles: any = useStyleConfig("Card", {
     variant,
+    size,
     styleConfig,
   })
 
