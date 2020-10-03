@@ -46,7 +46,7 @@ export default function MobileMenu({ logo, links }) {
               {links.map(link => (
                 <ListItem key={link.url} width="100%">
                   <Link href={link.url}>
-                    <Button width="100%" fontSize={5}>{link.text}</Button>
+                    <Button width="100%" fontSize="2xl">{link.text}</Button>
                   </Link>
                 </ListItem>
               ))}

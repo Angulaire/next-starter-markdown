@@ -21,7 +21,7 @@ const LangSelect = () => {
     control: base => ({
       ...base,
       cursor: 'pointer',
-      fontSize: theme.fontSizes[1],
+      fontSize: theme.fontSizes.sm,
       width: '60px',
       border: 0,
       boxShadow: 'none',
@@ -46,7 +46,7 @@ const LangSelect = () => {
     option: (base, state) => ({
       ...base,
       cursor: 'pointer',
-      fontSize: theme.fontSizes[1],
+      fontSize: theme.fontSizes.sm,
       color: state.isSelected ? theme.colors.text : theme.colors.accent5,
       background: state.isSelected ? theme.colors.redTransparent : 'transparent',
     })

@@ -1,19 +1,12 @@
+import { GetStaticProps } from 'next';
 import Layout from 'components/layout/Layout';
-import Hero from 'components/common/Hero';
+import Hero from 'components/sections/Hero';
 import { useTranslation } from 'next-translate';
 
-export default function Homepage() {
-  const { t, lang } = useTranslation()
-  const sections = t('home:sections', {}, { returnObjects: true })
-
+export default function Homepage({ globalData, pageData }) {
   return (
-    <Layout
-      seo={{
-        title: t('home:title'),
-        description: t('home:description'),
-        ogType: t('home:ogType')
-      }}>
-      {sections.map(section => {
+    <Layout metadata={pageData.metadata}>
+      {pageData.sections.map(section => {
         if (section.template === 'hero'){
           return (
             <Hero 
@@ -26,4 +19,29 @@ export default function Homepage() {
       })}
     </Layout>
   )
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+
+  let pageData = null
+  let globalData = null
+  pageData = {
+    metadata: {
+      metaTitle: "metaTitle from CMS",
+      metaDescription: "metaDescription from CMS"
+    },
+    sections: [
+      {
+        template: 'hero',
+        title: "Quickstart awesome websites"
+      }
+    ]
+  }
+
+  return {
+    props: {
+      globalData,
+      pageData
+    }
+  }
 }

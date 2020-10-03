@@ -4,6 +4,7 @@ const styleConfig = {
   baseStyle: {
     bg: 'white',
     borderRadius: 'default',
+    p: 5,
     transition: 'transform .2s ease-in-out, box-shadow .2s ease-in-out',
   },
   variants: {

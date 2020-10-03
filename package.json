@@ -8,6 +8,7 @@
   "scripts": {
     "dev": "next-translate && next dev",
     "build": "next-translate && next build",
+    "postbuild": "next-sitemap",
     "start": "next start",
     "export": "next export",
     "deploy": "yarn build && yarn export",
@@ -32,6 +33,7 @@
     "@types/node": "^14.0.14",
     "@types/react": "^16.9.41",
     "@types/react-dom": "^16.9.8",
+    "next-sitemap": "^1.2.4",
     "typescript": "^3.9.6"
   }
 }

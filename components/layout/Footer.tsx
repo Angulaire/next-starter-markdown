@@ -45,14 +45,14 @@ export default function Footer() {
       </Grid>
       <Grid gridTemplateColumns={['1fr', '1fr 1fr',]} mb={3}>
         <Flex alignItems="flex-end" justifyContent={['center', 'flex-start']} order={[2, 1]}>
-          <Text fontSize={1}>Copyright © 2020 Angulaire All rights reserved.</Text>
+          <Text fontSize="xs">Copyright © 2020 Angulaire All rights reserved.</Text>
         </Flex>
         <Flex alignItems="flex-end" justifyContent={['center', 'flex-end']} order={[1, 2]} mb={[10, 0]}>
           <List display="flex">
-            {siteConfig.contact.socials.map((social, index) => {
+            {siteConfig.contact.socials.map((social, i) => {
               const Logo = logos[social.network]
               return (
-                <ListItem key={index}>
+                <ListItem key={i}>
                   <a href={social.url} target="_blank" rel="nofollow">
                     <Logo fontSize="24px"/>
                   </a>

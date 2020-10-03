@@ -6,9 +6,7 @@
   "finalPagesDir": "pages",
   "localesPath": "content",
   "pages": {
-    "*": ["common", "global"],
-    "/": ["home"],
-    "/blog": ["blog"],
-    "/contact": ["contact"]
+    "*": ["common", "global", "contact"],
+    "/": ["home"]
   }
 }

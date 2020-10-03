@@ -2,9 +2,11 @@
 import { jsx } from '@chakra-ui/system';
 import { Grid, Flex, Heading, Image, Tag } from '@chakra-ui/core';
 import Link from 'next-translate/Link';
+import useTranslation from 'next-translate/useTranslation';
 import { Card } from 'components/common/Card';
 
 export default function ArticleCard({ article }) {
+  const { t, lang } = useTranslation()
   return (
     <Card as="article" variant="animated">
       <Link href="/blog/[slug]" as={`/blog/${article.slug}`}>
@@ -20,12 +22,12 @@ export default function ArticleCard({ article }) {
           </figure>
           <div sx={{p: '15px 20px', height: "16rem", display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
             <div>
-              <Heading as="h2" fontSize={4} mb={4}>{article.title}</Heading>
+              <Heading as="h2" fontSize="xl" mb={4}>{article.title}</Heading>
               <p>{article.description}</p>
             </div>
             <Grid gridTemplateColumns={'1fr 1fr'}>
               <Flex>
-                <time>{(new Date(article.date)).toLocaleString()}</time>
+                <time>{new Intl.DateTimeFormat(lang).format(new Date(article.date))}</time>
               </Flex>
               <Flex justifyContent="flex-end">
                 <Tag>{article.category}</Tag>
