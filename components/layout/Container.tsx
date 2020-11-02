@@ -16,12 +16,14 @@ const styleConfig = {
   },
   variants: {
     header: {
+      transition: '0.8s cubic-bezier(0.2, 0.8, 0.2, 1)',
       zIndex: 'navigation',
       position: 'fixed',
       top: 0,
+      right: 0,
+      left: 0,
       width: '100%',
-      height: '80px',
-      transition: '0.8s cubic-bezier(0.2, 0.8, 0.2, 1)'
+      height: ['60px', '80px']
     },
     footer: {
       bg: 'white',

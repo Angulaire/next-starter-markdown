@@ -1,6 +1,4 @@
-/** @jsx jsx */
-import { jsx } from '@chakra-ui/system';
-import { useStyleConfig, useTheme } from '@chakra-ui/core';
+import { Box, useStyleConfig, useTheme } from '@chakra-ui/core';
 import ReactSelect from 'react-select';
 
 const styleConfig = {
@@ -19,10 +17,11 @@ export default function Select({ ...rest }) {
       fontSize: theme.fontSizes.sm,
       border: 'none',
       boxShadow: 'none',
-      minHeight: 'none',
+      minHeight: '28px',
       backgroundColor: theme.colors.accent2,
       borderRadius: '20px',
       padding: '0 8px',
+      width: '75px'
     }),
     valueContainer: base => ({
       ...base,
@@ -62,5 +61,5 @@ export default function Select({ ...rest }) {
     styleConfig,
   })
 
-  return <ReactSelect styles={defaultStyles} sx={styles} {...rest} />
+  return <Box as={ReactSelect} styles={defaultStyles} sx={styles} {...rest} />
 }

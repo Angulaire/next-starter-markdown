@@ -2,11 +2,12 @@ import { Box, useStyleConfig } from '@chakra-ui/core';
 
 const styleConfig = {
   baseStyle: {
+    transition: 'transform .2s ease-in-out, box-shadow .2s ease-in-out',
     bg: 'white',
     borderRadius: 'default',
+    overflow: 'hidden',
     display: 'flex', 
     flexDirection: 'column',
-    transition: 'transform .2s ease-in-out, box-shadow .2s ease-in-out',
   },
   variants: {
     default: {

@@ -92,8 +92,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
   return { paths, fallback: true };
 }
 
-export const getStaticProps: GetStaticProps = async (ctx: any) => {
-  const { params: { slug: slugArray }, lang } = ctx
+export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
+  const slugArray = Object.keys(params).length === 0 ? ['index'] : params.slug
   const lastSlug = slugArray[slugArray?.length - 1]
   const firstSlug = slugArray[0]
 
@@ -101,7 +101,7 @@ export const getStaticProps: GetStaticProps = async (ctx: any) => {
   let globalData = null
   if(slugArray.length > 1 && firstSlug === "blog") {
     const article = getArticleBySlug(
-      lang,
+      locale,
       lastSlug, 
       [
         'title',
@@ -127,7 +127,7 @@ export const getStaticProps: GetStaticProps = async (ctx: any) => {
     }
   } else if(slugArray.length === 1 && firstSlug === "blog") {
     const articles = getAllArticles(
-      lang,
+      locale,
       [
         'title',
         'description',

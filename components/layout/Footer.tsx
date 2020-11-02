@@ -1,9 +1,7 @@
-/** @jsx jsx */
-import { jsx } from '@chakra-ui/system';
 import { Grid, Flex, IconButton, Text, List, ListItem } from '@chakra-ui/core';
 import { Angulaire } from 'components/common/Logo';
 import { Container }from 'components/layout/Container';
-import Link from 'next-translate/Link';
+import Link from 'next/link';
 import { AiFillFacebook, AiFillTwitterSquare, AiFillLinkedin } from 'react-icons/ai';
 import useTranslation from 'next-translate/useTranslation';
 import siteConfig from 'siteconfig.json';
@@ -33,7 +31,7 @@ export default function Footer() {
               <List>
                 {category.links.map((link, i) => (
                   <ListItem key={i} mb="1">
-                    <Link href={link.url}>
+                    <Link href={link.url} locale={lang}>
                       <a>{link.text}</a>
                     </Link>
                   </ListItem>

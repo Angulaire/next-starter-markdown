@@ -1,12 +1,10 @@
-/** @jsx jsx */
-import { jsx } from '@chakra-ui/system';
 import { Grid, Flex, List, ListItem } from '@chakra-ui/core';
 import { useState, useEffect } from 'react';
 import { Media } from 'components/layout/Media';
 import { Container } from 'components/layout/Container';
 import { Button } from 'components/common/Button';
 import { Angulaire } from 'components/common/Logo';
-import Link from 'next-translate/Link';
+import Link from 'next/link';
 import LangSelect from 'components/common/LangSelect';
 import MobileMenu from 'components/layout/MobileMenu';
 
@@ -38,14 +36,12 @@ export default function Header({ menu }: HeaderProps) {
       as="header" 
       variant="header" 
       size="largePY0"
-      sx={{
-        bg: scrollTop > 20 ? 'white' : 'transparent',
-        backdropFilter: scrollTop > 20 && 'blur(20px)'
-      }}
+      bg={scrollTop > 20 ? 'white' : 'transparent'}
+      style={{ backdropFilter: scrollTop > 20 && 'blur(20px)' }}
     >
         <Grid gridTemplateColumns={['60% repeat(2, auto)', '1fr 2fr 1fr']} height="100%">
         <Flex alignItems="center" justifyContent="flex-start">
-          <Link href="/">
+          <Link href="/" aria-label="Home">
             <a>
               <Logo />
             </a>

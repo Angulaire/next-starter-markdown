@@ -2,7 +2,7 @@
 title: The oldest living organism on the planet
 author: content/authors/arnaud-jeannin.md
 date: 2019-07-10T07:00:00.000+00:00
-coverImage: "/v1594209658/neonbrand-CuDoRFyTkAQ-unsplash_mhtiql.jpg"
+coverImage: "https://images.unsplash.com/photo-1602487937048-4ee0aebbf85c"
 description: 'Carrot cake topping croissant cupcake toffee marzipan chocolate cake.
   Gingerbread candy canes marshmallow jelly-o lollipop chocolate. '
 categories: Tech

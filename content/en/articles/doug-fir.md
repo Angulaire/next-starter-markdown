@@ -4,7 +4,7 @@ author: content/authors/arnaud-jeannin.md
 date: 2019-07-09T18:04:44.000+02:00
 description: Bear claw gummies wafer topping. Dessert jujubes icing chocolate bar
   carrot cake marzipan marzipan jelly macaroon.
-coverImage: "/v1594209654/air-cooler_lc5sqs.png"
+coverImage: "https://images.unsplash.com/photo-1602601125275-115b42b9e76a"
 categories: Tech
 category: Tech
 

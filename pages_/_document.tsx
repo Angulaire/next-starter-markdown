@@ -1,5 +1,4 @@
 import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document';
-import documentLang from 'next-translate/documentLang'
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -9,7 +8,7 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html lang={documentLang(this.props)}>
+      <Html>
         <Head>
           <link rel="icon" type="image/png" sizes="192x192" href="/favicon/android-chrome-192x192.png"/>
           <link rel="icon" type="image/png" sizes="512x512" href="/favicon/android-chrome-512x512.png"/>

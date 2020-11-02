@@ -4,7 +4,7 @@ author: content/authors/arnaud-jeannin.md
 date: 2019-07-08T16:05:29.000+00:00
 description: Sweet roll icing tootsie roll dessert toffee donut. Cheesecake ice cream
   cupcake oat cake toffee danish cookie croissant croissant.
-coverImage: "/v1594209656/fridge_o7y7ye.png"
+coverImage: "https://images.unsplash.com/photo-1600711790040-713acd4cef74"
 categories: Growth
 category: Design
 

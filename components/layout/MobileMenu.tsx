@@ -1,5 +1,3 @@
-/** @jsx jsx */
-import { jsx } from '@chakra-ui/system';
 import {
   Flex,
   List,
@@ -14,7 +12,7 @@ import {
   DrawerCloseButton,
 } from '@chakra-ui/core';
 import { Button } from 'components/common/Button';
-import Link from 'next-translate/Link';
+import Link from 'next/link';
 import { AiOutlineMenu } from 'react-icons/ai';
 
 export default function MobileMenu({ logo, links }) {
@@ -41,7 +39,7 @@ export default function MobileMenu({ logo, links }) {
                 <DrawerCloseButton position="relative" top="0"/>
               </Flex>
             </DrawerHeader>
-            <DrawerBody sx={{ display: 'flex', alignItems: 'center'}}>
+            <DrawerBody display="flex" alignItems="center">
               <List width="100%">
                 {links.map(link => (
                   <ListItem key={link.url} width="100%">

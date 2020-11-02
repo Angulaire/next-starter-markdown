@@ -4,7 +4,7 @@ author: content/authors/arnaud-jeannin.md
 date: 2019-07-10T16:04:44.000+00:00
 description: Chocolate donut apple pie jelly bear claw marzipan. Marzipan bear claw
   fruitcake. Muffin pie oat cake.
-coverImage: "/v1594209657/repair_c45jjj.png"
+coverImage: "https://images.unsplash.com/photo-1604164756027-5fddc9b7015d"
 categories: Sales
 category: Sales
 

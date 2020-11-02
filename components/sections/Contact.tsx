@@ -1,6 +1,5 @@
-/** @jsx jsx */
-import { jsx } from '@chakra-ui/system';
-import { Grid, Flex, Heading } from '@chakra-ui/core';
+
+import { Grid, Flex, Heading, Text } from '@chakra-ui/core';
 import { Container } from 'components/layout/Container';
 import { Card } from 'components/common/Card';
 import ContactForm from 'components/form/Contact';
@@ -21,10 +20,10 @@ export default function Contact({ title }) {
             <Heading as="h1" mb={10}>{translation.title}</Heading>
             <div>
               <ReactMarkdown source={siteConfig.contact.address} />
-              <p sx={{mt: 5, 'span': { display: 'block' }}}>
+              <Text mt="5" sx={{ span: { display: 'block' }}}>
                 <span>{`Tel: ${siteConfig.contact.phone}`}</span>
                 <span>{`Email: ${siteConfig.contact.email}`}</span>
-              </p>
+              </Text>
             </div>
           </div>
         </Flex>

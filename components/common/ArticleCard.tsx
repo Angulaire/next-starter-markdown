@@ -1,7 +1,6 @@
-/** @jsx jsx */
-import { jsx } from '@chakra-ui/system';
-import { Grid, Flex, Heading, Image, Tag } from '@chakra-ui/core';
-import Link from 'next-translate/Link';
+import { Box, Grid, Flex, Heading, Tag } from '@chakra-ui/core';
+import Image from 'next/image';
+import Link from 'next/link';
 import useTranslation from 'next-translate/useTranslation';
 import readingTime from 'reading-time';
 import { Card } from 'components/common/Card';
@@ -11,19 +10,18 @@ export default function ArticleCard({ article }) {
   const { minutes }= readingTime(article.content);
 
   return (
-    <Link href="/blog/[slug]" as={`/blog/${article.slug}`}>
+    <Link href={`/blog/${article.slug}`} locale={lang}>
       <a>
-        <Card as="article" size="defaultP0" variant="animated" minHeight="sm">
-          <figure>
+        <Card as="article" size="defaultP0" variant="animated">
+          <Box as="figure" width="100%">
             <Image
-              src={`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/c_scale,w_auto:100,dpr_auto/${article.coverImage}`}
+              src={article.coverImage}
               alt={`Cover image for ${article.title}`}
-              boxSize="100%"
-              objectFit="cover"
-              maxHeight="12rem"
+              width={1200}
+              height={800}
             />
-          </figure>
-          <div sx={{
+          </Box>
+          <Box sx={{
             p: '15px 20px', 
             display: 'flex', 
             flexDirection: 'column', 
@@ -47,7 +45,7 @@ export default function ArticleCard({ article }) {
                 </Flex>
               </Grid>
             </div>
-          </div>
+          </Box>
         </Card>
       </a>
     </Link>

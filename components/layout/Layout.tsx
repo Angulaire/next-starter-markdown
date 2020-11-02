@@ -1,5 +1,4 @@
-/** @jsx jsx */
-import { jsx } from '@chakra-ui/system';
+import { Box } from '@chakra-ui/core';
 import Head from 'next/head';
 import { useRouter } from 'next/router'
 import { NextSeo } from 'next-seo';
@@ -40,9 +39,9 @@ export default function Layout({ header, children, metadata }: LayoutProps) {
         }}
       />
       {header}
-      <main sx={{ mt: '80px', minHeight: '80vh'}}>
+      <Box as="main" mt="80px" minHeight="80vh">
         {children}
-      </main>
+      </Box>
       <Footer />
     </>
   )
