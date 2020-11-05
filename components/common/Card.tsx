@@ -1,19 +1,20 @@
 import { Box, useStyleConfig } from '@chakra-ui/core';
 
 const styleConfig = {
-  baseStyle: {
+  baseStyle: ({ colorMode }) => ({
     transition: 'transform .2s ease-in-out, box-shadow .2s ease-in-out',
-    bg: 'white',
+    bg: colorMode === 'dark' ? 'accent.800': 'white',
     borderRadius: 'default',
     overflow: 'hidden',
     display: 'flex', 
     flexDirection: 'column',
-  },
+  }),
   variants: {
     default: {
       boxShadow: 'primary',
     },
     animated: {
+      boxShadow: 'primary',
       _hover: {
         boxShadow: 'primaryHover',
         transform: 'translateY(-3px)'

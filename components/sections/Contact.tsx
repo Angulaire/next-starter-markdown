@@ -1,4 +1,3 @@
-
 import { Grid, Flex, Heading, Text } from '@chakra-ui/core';
 import { Container } from 'components/layout/Container';
 import { Card } from 'components/common/Card';
@@ -7,17 +6,15 @@ import ReactMarkdown from 'react-markdown';
 import useTranslation from 'next-translate/useTranslation';
 import siteConfig from 'siteconfig.json';
 
-
 export default function Contact({ title }) {
   const { t, lang } = useTranslation()
-  const translation = t('contact:sections', {}, { returnObjects: true }).find(section => section.template === 'contact-section')
 
   return (
     <Container>
       <Grid gridTemplateColumns={['1fr', '1fr 1fr']} gridGap={[10, 40]}>
         <Flex justifyContent="center" alignItems="center">
           <div>
-            <Heading as="h1" mb={10}>{translation.title}</Heading>
+            <Heading as="h1" mb={10}>{title[lang]}</Heading>
             <div>
               <ReactMarkdown source={siteConfig.contact.address} />
               <Text mt="5" sx={{ span: { display: 'block' }}}>

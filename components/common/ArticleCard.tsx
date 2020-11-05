@@ -1,4 +1,4 @@
-import { Box, Grid, Flex, Heading, Tag } from '@chakra-ui/core';
+import { Box, Grid, Flex, Heading, Text, Tag } from '@chakra-ui/core';
 import Image from 'next/image';
 import Link from 'next/link';
 import useTranslation from 'next-translate/useTranslation';
@@ -13,7 +13,7 @@ export default function ArticleCard({ article }) {
     <Link href={`/blog/${article.slug}`} locale={lang}>
       <a>
         <Card as="article" size="defaultP0" variant="animated">
-          <Box as="figure" width="100%">
+          <Box as="figure">
             <Image
               src={article.coverImage}
               alt={`Cover image for ${article.title}`}
@@ -30,7 +30,7 @@ export default function ArticleCard({ article }) {
           }}>
             <div>
               <Heading as="h2" fontSize="xl" mb={4}>{article.title}</Heading>
-              <p>{article.description}</p>
+              <Text>{article.description}</Text>
             </div>
             <div>
               <Tag mb="5">{article.category}</Tag>

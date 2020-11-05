@@ -155,7 +155,7 @@ export default function Contact() {
             </FormErrorMessage>
           </FormControl>
           <Box mt="5">
-            <Button variant="primary" onClick={handleSubmit(onSubmit)} width="100%">
+            <Button onClick={handleSubmit(onSubmit)} width="100%">
               {!status.submitting
                 ? !status.submitted
                   ? 'Request a demo'

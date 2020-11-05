@@ -8,7 +8,7 @@ import siteConfig from 'siteconfig.json';
 
 export default function Footer() {
   const { t, lang } = useTranslation()
-  const categories = t('global:footer.categories', {}, { returnObjects: true })
+  const categories: any = t('global:footer.categories', {}, { returnObjects: true })
   const logos = {
     "Facebook": AiFillFacebook,
     "Twitter": AiFillTwitterSquare,

@@ -1,4 +1,4 @@
-import { Box, useStyleConfig } from '@chakra-ui/core';
+import { Box, useStyleConfig, useColorMode } from '@chakra-ui/core';
 
 const styleConfig = {
   sizes: {
@@ -25,14 +25,15 @@ const styleConfig = {
       width: '100%',
       height: ['60px', '80px']
     },
-    footer: {
-      bg: 'white',
+    footer: ({ colorMode }) => ({
+      bg: colorMode === 'dark' ? 'accent.800' : 'accent.100',
       zIndex: 'navigation',
-    }
+    })
   }
 }
 
-export const Container = ({ size='default', variant='primary', ...rest }) => {
+export const Container = ({ size='default', variant='primary', layerStyles = { dark: 'baseDark', light: 'baseLight' }, ...rest }) => {
+  const { colorMode } = useColorMode()
 
   const styles: any = useStyleConfig('Button', {
     size,
@@ -40,5 +41,5 @@ export const Container = ({ size='default', variant='primary', ...rest }) => {
     styleConfig,
   })
 
-  return <Box sx={styles} {...rest} />
+  return <Box layerStyle={layerStyles[colorMode]} sx={styles} {...rest} />
 }

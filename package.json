@@ -22,7 +22,7 @@
     "gray-matter": "^4.0.2",
     "next": "latest",
     "next-seo": "^4.7.1",
-    "next-translate": "^0.19.2",
+    "next-translate": "^0.19.4",
     "react": "latest",
     "react-dom": "latest",
     "react-hook-form": "^6.0.4",
