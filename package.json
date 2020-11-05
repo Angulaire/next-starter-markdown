@@ -6,7 +6,7 @@
   "version": "0.1.0",
   "author": "@arnaudjnn",
   "scripts": {
-    "dev": "next-translate && next dev -p 8080",
+    "dev": "next-translate && next dev",
     "build": "next-translate && next build",
     "postbuild": "next-sitemap",
     "start": "next start",

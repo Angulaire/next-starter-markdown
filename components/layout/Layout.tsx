@@ -7,7 +7,7 @@ import Footer from 'components/layout/Footer';
 
 export default function Layout({ globalData, metadata, children }) {
   const { asPath } = useRouter()
-  
+
   return (
     <>
       <Head>
@@ -33,7 +33,7 @@ export default function Layout({ globalData, metadata, children }) {
       <Box as="main" mt="80px" minHeight="80vh">
         {children}
       </Box>
-      <Footer />
+      <Footer {...globalData.footer}/>
     </>
   )
 }
