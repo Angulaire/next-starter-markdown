@@ -10,7 +10,7 @@ import {
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
-} from '@chakra-ui/core';
+} from '@chakra-ui/react';
 import { Button } from 'components/common/Button';
 import Link from 'next/link';
 import { AiOutlineMenu } from 'react-icons/ai';

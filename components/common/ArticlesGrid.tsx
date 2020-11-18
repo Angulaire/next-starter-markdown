@@ -1,4 +1,4 @@
-import { Grid } from '@chakra-ui/core';
+import { Grid } from '@chakra-ui/react';
 import ArticleCard from 'components/common/ArticleCard';
 import { Container } from 'components/layout/Container';
 

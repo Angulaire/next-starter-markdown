@@ -1,4 +1,4 @@
-import { Box, useStyleConfig } from '@chakra-ui/core';
+import { Box, useStyleConfig } from '@chakra-ui/react';
 
 const styleConfig = {
   sizes: {

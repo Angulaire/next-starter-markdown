@@ -1,4 +1,4 @@
-import { Grid, Flex, List, ListItem } from '@chakra-ui/core';
+import { Grid, Flex, List, ListItem } from '@chakra-ui/react';
 import { useState, useEffect } from 'react';
 import { Media } from 'components/layout/Media';
 import { Container } from 'components/layout/Container';

@@ -1,4 +1,4 @@
-import { ChakraProvider, extendTheme } from '@chakra-ui/core';
+import { ChakraProvider, extendTheme } from '@chakra-ui/react';
 import { MediaContextProvider } from 'components/layout/Media';
 import 'focus-visible/dist/focus-visible';
 import theme from 'theme';

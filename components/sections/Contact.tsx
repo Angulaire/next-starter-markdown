@@ -1,5 +1,5 @@
 
-import { Grid, Flex, Heading, Text } from '@chakra-ui/core';
+import { Grid, Flex, Heading, Text } from '@chakra-ui/react';
 import { Container } from 'components/layout/Container';
 import { Card } from 'components/common/Card';
 import ContactForm from 'components/form/Contact';

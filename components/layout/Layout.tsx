@@ -1,4 +1,4 @@
-import { Box } from '@chakra-ui/core';
+import { Box } from '@chakra-ui/react';
 import Head from 'next/head';
 import { useRouter } from 'next/router'
 import { NextSeo } from 'next-seo';

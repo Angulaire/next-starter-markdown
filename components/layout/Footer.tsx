@@ -1,4 +1,4 @@
-import { Grid, Flex, IconButton, Text, List, ListItem } from '@chakra-ui/core';
+import { Grid, Flex, IconButton, Text, List, ListItem } from '@chakra-ui/react';
 import { Angulaire } from 'components/common/Logo';
 import { Container }from 'components/layout/Container';
 import Link from 'next/link';

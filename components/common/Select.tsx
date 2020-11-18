@@ -1,4 +1,4 @@
-import { Box, useStyleConfig, useTheme } from '@chakra-ui/core';
+import { Box, useStyleConfig, useTheme } from '@chakra-ui/react';
 import ReactSelect from 'react-select';
 
 const styleConfig = {

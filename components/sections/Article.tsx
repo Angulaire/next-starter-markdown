@@ -1,4 +1,4 @@
-import { Box, Grid, Flex, Heading, Text } from '@chakra-ui/core';
+import { Box, Grid, Flex, Heading, Text } from '@chakra-ui/react';
 import ReactMarkdown from 'react-markdown';
 import useTranslation from 'next-translate/useTranslation';
 import { Container } from 'components/layout/Container';

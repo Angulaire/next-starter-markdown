@@ -1,4 +1,4 @@
-import { Box, Grid, Flex, Heading, Tag } from '@chakra-ui/core';
+import { Box, Grid, Flex, Heading, Tag } from '@chakra-ui/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import useTranslation from 'next-translate/useTranslation';

@@ -1,4 +1,4 @@
-import { Grid, Flex } from '@chakra-ui/core';
+import { Grid, Flex } from '@chakra-ui/react';
 import { Card } from 'components/common/Card';
 import Image from 'next/image';
 import { Container } from 'components/layout/Container';
