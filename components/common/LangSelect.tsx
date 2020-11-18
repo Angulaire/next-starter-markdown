@@ -1,12 +1,11 @@
 import { useRouter } from 'next/router';
-import useTranslation from 'next-translate/useTranslation';
 import Select from 'components/common/Select';
 
 const LangSelect = () => {
   const router = useRouter()
-  const { t, lang } = useTranslation()
+  const { locales, locale } = router
 
-  const options = router.locales.map(lng => ({
+  const options = locales.map(lng => ({
     value: lng, label: lng.toUpperCase()
   }))
 
@@ -19,7 +18,7 @@ const LangSelect = () => {
       isSearchable={false}
       onChange={handleChange}
       defaultValue={router.locale}
-      placeholder={lang.toUpperCase()}
+      placeholder={locale.toUpperCase()}
       options={options}
     />
   )

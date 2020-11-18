@@ -1,5 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { getGlobalData, getAllArticles, getArticleBySlug } from 'lib/api';
+import { getGlobalData, getPageData, getAllArticles, getArticleBySlug } from 'lib/api';
 import { useRouter } from 'next/router';
 import ErrorPage from 'next/error';
 import Layout from 'components/layout/Layout';
@@ -143,21 +143,7 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
       ]
     }
   } else if(firstSlug === "contact") {
-    pageData = {
-      metadata: {
-        metaTitle: "metaTitle from CMS",
-        metaDescription: "metaDescription from CMS"
-      },
-      sections: [
-        {
-          template: 'contact-section',
-          title: {
-            en: "Let's get in touch",
-            fr: "Prenons rendez-vous"
-          }
-        }
-      ]
-    }
+    pageData = await getPageData(locale, "contact")
   }
 
   if (pageData == null) {

@@ -1,7 +1,7 @@
 import { Box, Grid, Flex, Heading, Text, Tag } from '@chakra-ui/react';
 import Image from 'next/image';
 import Link from 'next/link';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from 'lib/hooks/useTranslation';
 import readingTime from 'reading-time';
 import { Card } from 'components/common/Card';
 
@@ -40,7 +40,7 @@ export default function ArticleCard({ article }) {
                 </Flex>
                 <Flex justifyContent="flex-end">
                   <div>
-                    {`${Math.ceil(minutes)} min. ${t('common:read')}`}
+                    {`${Math.ceil(minutes)} min. ${t['read']}`}
                   </div>
                 </Flex>
               </Grid>

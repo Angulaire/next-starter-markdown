@@ -1,0 +1,14 @@
+{
+  "metadata": {
+    "metaTitle": "Angulaire | Our work is serious, we are not",
+    "metaDescription": "We build products close to our hearts, and put everything we’ve got into them, so the final products we deliver speak for themselves.",
+    "ogImage": "",
+    "ogType": "website"
+  },
+  "sections": [
+    {
+      "template": "contact-section",
+      "title": "Let's get in touch"
+    }
+  ]
+}

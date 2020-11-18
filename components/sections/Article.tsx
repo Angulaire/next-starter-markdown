@@ -1,11 +1,11 @@
 import { Box, Grid, Flex, Heading, Text } from '@chakra-ui/react';
 import ReactMarkdown from 'react-markdown';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from 'lib/hooks/useTranslation';
 import { Container } from 'components/layout/Container';
 
 export default function Article({ title, category, date, content, coverImage }) {
-  const { t, lang } = useTranslation()
-  const localeDate = new Intl.DateTimeFormat(lang).format(new Date(date))
+  const { locale } = useTranslation()
+  const localeDate = new Intl.DateTimeFormat(locale).format(new Date(date))
 
   return (
     <Container as="article" size="default">

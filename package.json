@@ -6,8 +6,8 @@
   "version": "0.1.0",
   "author": "@arnaudjnn",
   "scripts": {
-    "dev": "next-translate && next dev",
-    "build": "next-translate && next build",
+    "dev": "next dev",
+    "build": "next build",
     "postbuild": "next-sitemap",
     "start": "next start",
     "export": "next export",
@@ -24,7 +24,6 @@
     "gray-matter": "^4.0.2",
     "next": "latest",
     "next-seo": "^4.7.1",
-    "next-translate": "^0.19.4",
     "react": "latest",
     "react-dom": "latest",
     "react-hook-form": "^6.0.4",

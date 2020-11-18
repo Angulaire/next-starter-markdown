@@ -4,7 +4,6 @@ import { Container }from 'components/layout/Container';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { AiFillFacebook, AiFillTwitterSquare, AiFillLinkedin } from 'react-icons/ai';
-import useTranslation from 'next-translate/useTranslation';
 import siteConfig from 'siteconfig.json';
 
 export default function Footer({ headline, categories }) {

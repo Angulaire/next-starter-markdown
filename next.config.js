@@ -1,9 +1,7 @@
-const { locales, defaultLocale } = require('./i18n.json')
-
 module.exports = {
   i18n: { 
-    locales, 
-    defaultLocale 
+    locales: ["fr", "en"], 
+    defaultLocale: "fr"
   },
   images: {
 		domains: ["images.unsplash.com"],

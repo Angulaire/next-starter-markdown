@@ -7,13 +7,13 @@ import { Angulaire } from 'components/common/Logo';
 import Link from 'next/link';
 import LangSelect from 'components/common/LangSelect';
 import MobileMenu from 'components/layout/MobileMenu';
-import useTranslation from 'next-translate/useTranslation';
+import { useTranslation } from 'lib/hooks/useTranslation';
 import { ColorModeSwitcher } from 'components/common/ColorModeSwitcher';
 
 export default function Header({ links }) {
   const [scrollTop, setScrollTop] = useState(0);
   const { colorMode } = useColorMode()
-  const { t, lang } = useTranslation()
+  const { t } = useTranslation()
   const Logo = Angulaire
 
   useEffect(() => {
@@ -35,7 +35,7 @@ export default function Header({ links }) {
     >
       <Grid gridTemplateColumns={['1fr 0 2fr', '1fr 2fr 1fr']} height="100%">
         <Flex alignItems="center" justifyContent="flex-start">
-          <Link href="/" aria-label={t('common:home')}>
+          <Link href="/" aria-label={t['home']}>
             <a>
               <Logo />
             </a>
