@@ -1,23 +1,15 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { getAllArticles, getArticleBySlug } from 'lib/api';
+import { getGlobalData, getAllArticles, getArticleBySlug } from 'lib/api';
 import { useRouter } from 'next/router';
 import ErrorPage from 'next/error';
 import Layout from 'components/layout/Layout';
 import Hero from 'components/sections/Hero';
-import Header from 'components/layout/Header';
 import Contact from 'components/sections/Contact';
 import ArticlesGrid from 'components/common/ArticlesGrid';
 import Article from 'components/sections/Article';
-import useTranslation from 'next-translate/useTranslation';
 
 export default function DynamicPage({ globalData, pageData }) {
   const router = useRouter()
-
-  // Use globalData when translations come from CMS
-  const { t } = useTranslation()
-  const menu = {
-    links: t('global:header.links', {}, { returnObjects: true })
-  }
 
   if (!router.isFallback && !pageData?.sections.length) {
     return <ErrorPage statusCode={404} />;
@@ -30,7 +22,7 @@ export default function DynamicPage({ globalData, pageData }) {
   return (
     <Layout 
       metadata={pageData.metadata}
-      header={<Header menu={menu}/>}
+      globalData={globalData}
     >
       {pageData.sections.map(section => {
         if (section.template === 'hero'){
@@ -38,8 +30,8 @@ export default function DynamicPage({ globalData, pageData }) {
             <Hero 
               key={section.template}
               title={section.title}
+              description={section.description}
               image={section.image}
-              alt={section.alt}
             />
           )
         }
@@ -98,7 +90,6 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
   const firstSlug = slugArray[0]
 
   let pageData = null
-  let globalData = null
   if(slugArray.length > 1 && firstSlug === "blog") {
     const article = getArticleBySlug(
       locale,
@@ -160,7 +151,10 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
       sections: [
         {
           template: 'contact-section',
-          title: "Title from CMS"
+          title: {
+            en: "Let's get in touch",
+            fr: "Prenons rendez-vous"
+          }
         }
       ]
     }
@@ -170,6 +164,8 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
     // Giving the page no props will trigger a 404 page
     return { props: {} };
   }
+
+  const globalData = await getGlobalData(locale)
 
   return {
     props: {

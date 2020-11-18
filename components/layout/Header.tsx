@@ -1,4 +1,4 @@
-import { Grid, Flex, List, ListItem } from '@chakra-ui/react';
+import { useColorMode, Grid, Flex, List, ListItem } from '@chakra-ui/react';
 import { useState, useEffect } from 'react';
 import { Media } from 'components/layout/Media';
 import { Container } from 'components/layout/Container';
@@ -7,19 +7,13 @@ import { Angulaire } from 'components/common/Logo';
 import Link from 'next/link';
 import LangSelect from 'components/common/LangSelect';
 import MobileMenu from 'components/layout/MobileMenu';
+import useTranslation from 'next-translate/useTranslation';
+import { ColorModeSwitcher } from 'components/common/ColorModeSwitcher';
 
-type HeaderProps = {
-  menu: {
-    links: {
-      url: string
-      text: string
-      targetBlank: boolean
-    }[]
-  }
-}
-
-export default function Header({ menu }: HeaderProps) {
+export default function Header({ links }) {
   const [scrollTop, setScrollTop] = useState(0);
+  const { colorMode } = useColorMode()
+  const { t, lang } = useTranslation()
   const Logo = Angulaire
 
   useEffect(() => {
@@ -36,34 +30,33 @@ export default function Header({ menu }: HeaderProps) {
       as="header" 
       variant="header" 
       size="largePY0"
-      bg={scrollTop > 20 ? 'white' : 'transparent'}
-      style={{ backdropFilter: scrollTop > 20 && 'blur(20px)' }}
+      bg={scrollTop > 20 ? (colorMode === 'dark' ? 'black' : 'white') : 'transparent'}
+      style={{backdropFilter: scrollTop > 20 && 'blur(20px)'}}
     >
-        <Grid gridTemplateColumns={['60% repeat(2, auto)', '1fr 2fr 1fr']} height="100%">
+      <Grid gridTemplateColumns={['1fr 0 2fr', '1fr 2fr 1fr']} height="100%">
         <Flex alignItems="center" justifyContent="flex-start">
-          <Link href="/" aria-label="Home">
+          <Link href="/" aria-label={t('common:home')}>
             <a>
               <Logo />
             </a>
           </Link>
         </Flex>
-        <Flex alignItems="center" justifyContent="center">
-          <Media greaterThan="xs">
-            <List display="flex">
-              {menu.links.map(link => (
-                <ListItem key={link.url}>
-                  <Link href={link.url}>
-                    <Button variant="link">{link.text}</Button>
-                  </Link>
-                </ListItem>
-              ))}
-            </List>
-          </Media>
+        <Flex as={Media} greaterThan="xs" alignItems="center" justifyContent="center">
+          <List display="flex">
+            {links.map(link => (
+              <ListItem key={link.url}>
+                <Link href={link.url}>
+                  <Button variant="link">{link.text}</Button>
+                </Link>
+              </ListItem>
+            ))}
+          </List>
         </Flex>
         <Flex alignItems="center" justifyContent="flex-end">
+          <ColorModeSwitcher />
           <LangSelect />
           <Media at="xs">
-            <MobileMenu logo={<Logo />} links={menu.links}/>
+            <MobileMenu logo={<Logo />} links={links}/>
           </Media>
         </Flex>
       </Grid>

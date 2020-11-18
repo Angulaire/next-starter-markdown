@@ -46,10 +46,22 @@ const textStyles =  {
 }
 
 export default {
+  useSystemColorMode: false,
+  initialColorMode: 'light',
   colors: {
     grey: '#FAFAFA',
     primary: '#07C',
-    secondary: '#30C'
+    secondary: '#30C',
+    accent: {
+      100: '#FAFAFA',
+      200: '#EAEAEA',
+      300: '#999',
+      400: '#888',
+      500: '#666',
+      600: '#444',
+      700: '#333',
+      800: '#111',
+    }
   },
   fonts: {
     body: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif',
@@ -138,29 +150,31 @@ export default {
     navigation: 1,
     modal: 10
   },
-  textStyles,
+  textStyles: {
+    ...textStyles
+  },
+  layerStyles: {
+    baseDark: {
+      bg: 'black',
+      'h1, h2, h3, h4, h5, h6, a, p': {
+        color: 'white'
+      }
+    },
+    baseLight: {
+      bg: 'white',
+      'h1, h2, h3, h4, h5, h6, a, p': {
+        color: 'black'
+      }
+    },
+  },
   styles: {
-    global: {
-      ...textStyles,
+    global: ({ colorMode }) => ({
       'html, body': {
         fontSize: 'md',
-        bg: 'grey',
         lineHeight: 'tall',
-      },
-      'h1, h2, h3, h4, h5, h6': {
-        fontFamily: 'heading',
-        fontWeight: 'heading',
-        lineHeight: 'heading',
-        color: 'black'
-      },
-      a: {
-        color: '#333',
-        cursor: 'pointer',
-        transition: 'all .2s ease',
-        '&:hover': {
-          color: 'black'
-        }
+        bg: colorMode === 'dark' ? 'black' : 'white',
+        ...textStyles,
       }
-    }
+    })
   }
 }

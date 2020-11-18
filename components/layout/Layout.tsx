@@ -1,20 +1,11 @@
 import { Box } from '@chakra-ui/react';
 import Head from 'next/head';
+import Header from 'components/layout/Header';
 import { useRouter } from 'next/router'
 import { NextSeo } from 'next-seo';
 import Footer from 'components/layout/Footer';
 
-type LayoutProps = {
-  header?: React.ReactNode;
-  metadata?: {
-    metaTitle: string;
-    metaDescription: string;
-    ogType?: string;
-  }
-  children: React.ReactNode;
-}
-
-export default function Layout({ header, children, metadata }: LayoutProps) {
+export default function Layout({ globalData, metadata, children }) {
   const { asPath } = useRouter()
 
   return (
@@ -38,11 +29,11 @@ export default function Layout({ header, children, metadata }: LayoutProps) {
           ]
         }}
       />
-      {header}
+      <Header {...globalData.header}/>
       <Box as="main" mt="80px" minHeight="80vh">
         {children}
       </Box>
-      <Footer />
+      <Footer {...globalData.footer}/>
     </>
   )
 }

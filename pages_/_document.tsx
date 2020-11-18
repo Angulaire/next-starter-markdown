@@ -1,4 +1,5 @@
 import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document';
+import { ColorModeScript } from '@chakra-ui/core'
 
 class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
@@ -18,6 +19,7 @@ class MyDocument extends Document {
           <link rel="manifest" href="/favicon/site.webmanifest"/>
         </Head>
         <body>
+          <ColorModeScript initialColorMode="light" />
           <Main />
           <NextScript />
         </body>

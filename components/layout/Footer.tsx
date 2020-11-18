@@ -2,13 +2,13 @@ import { Grid, Flex, IconButton, Text, List, ListItem } from '@chakra-ui/react';
 import { Angulaire } from 'components/common/Logo';
 import { Container }from 'components/layout/Container';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { AiFillFacebook, AiFillTwitterSquare, AiFillLinkedin } from 'react-icons/ai';
 import useTranslation from 'next-translate/useTranslation';
 import siteConfig from 'siteconfig.json';
 
-export default function Footer() {
-  const { t, lang } = useTranslation()
-  const categories = t('global:footer.categories', {}, { returnObjects: true })
+export default function Footer({ headline, categories }) {
+  const { locale } = useRouter()
   const logos = {
     "Facebook": AiFillFacebook,
     "Twitter": AiFillTwitterSquare,
@@ -22,7 +22,7 @@ export default function Footer() {
           <div>
             <Angulaire width="10rem"/>
           </div>
-          <Text mt="8" fontSize="sm">{t('global:footer.headline')}</Text>
+          <Text mt="8" fontSize="sm">{headline}</Text>
         </div>
         <Grid gridTemplateColumns={['repeat(2, 1fr)', 'repeat(3, 1fr)',]} gridGap={4}>
           {categories.map((category, index) => (
@@ -31,7 +31,7 @@ export default function Footer() {
               <List>
                 {category.links.map((link, i) => (
                   <ListItem key={i} mb="1">
-                    <Link href={link.url} locale={lang}>
+                    <Link href={link.url} locale={locale}>
                       <a>{link.text}</a>
                     </Link>
                   </ListItem>

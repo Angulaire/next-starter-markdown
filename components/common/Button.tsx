@@ -22,22 +22,23 @@ const styleConfig = {
       fontSize: 'lg'
     },
   },
-  variants: {
+  variants: ({ colorMode }) => ({
     primary: {
-      bg: 'black',
-      color: 'white'
+      bg: colorMode === 'dark' ? 'white' : 'black',
+      color: colorMode === 'dark' ? 'black' : 'white'
     },
     outline: {
-      border: '1px solid'
+      border: '1px solid',
+      borderColor: colorMode === 'dark' ? 'white' : 'black',
     },
     link: {
-      color: 'black',
+      color: colorMode === 'dark' ? 'white' : 'black',
       transition: 'all .2s ease',
       '&:hover': {
         opacity: .6
       }
     }
-  },
+  }),
 }
 
 export const Button = ({ size='default', variant='primary', ...rest }) => {
