@@ -7,6 +7,7 @@ import Hero from 'components/sections/Hero';
 import Contact from 'components/sections/Contact';
 import ArticlesGrid from 'components/common/ArticlesGrid';
 import Article from 'components/sections/Article';
+import Search from 'components/sections/Search';
 
 export default function DynamicPage({ globalData, pageData }) {
   const router = useRouter()
@@ -54,6 +55,14 @@ export default function DynamicPage({ globalData, pageData }) {
         if (section.template === 'articles-grid'){
           return (
             <ArticlesGrid 
+              key={section.template} 
+              articles={section.articles}
+            />
+          )
+        }
+        if (section.template === 'articles-search'){
+          return (
+            <Search
               key={section.template} 
               articles={section.articles}
             />
@@ -136,6 +145,10 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
         metaDescription: "metaDescription from CMS"
       },
       sections: [
+        {
+          template: 'articles-search',
+          articles
+        },
         {
           template: 'articles-grid',
           articles
