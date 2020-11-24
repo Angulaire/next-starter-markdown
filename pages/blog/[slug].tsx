@@ -1,5 +1,5 @@
 import { GetStaticPaths, GetStaticProps } from 'next';
-import { getGlobalData, getPageData } from 'lib/api';
+import { getGlobalData, getPageData, getAllArticles, getArticleBySlug } from 'lib/api';
 import { useRouter } from 'next/router';
 import ErrorPage from 'next/error';
 import Layout from 'components/layout/Layout';
@@ -28,20 +28,43 @@ export default function DynamicPage({ globalData, pageData }) {
 
 export const getStaticPaths: GetStaticPaths = async () => {
 
-  const pages = [
-    { slug: 'contact' }
-  ]
-  const paths = pages.map(page => ({
-    params: { slug: [page.slug] }
+  const articles = await getAllArticles('en', ['slug'])
+  const paths = articles.map(article => ({
+    params: { slug: article.slug }
   }))
 
   return { paths, fallback: true };
 }
 
 export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
-  const { slug } = params
+  const { slug } = params
 
-  const pageData = await getPageData(locale, slug)
+  const article = getArticleBySlug(
+    locale,
+    slug, 
+    [
+      'title',
+      'date',
+      'slug',
+      'content',
+      'coverImage',
+      'category',
+      'author'
+    ]
+  )
+
+  const pageData = {
+    metadata: {
+      metaTitle: "metaTitle from CMS",
+      metaDescription: "metaDescription from CMS"
+    },
+    sections: [
+      {
+        template: 'article',
+        article
+      }
+    ]
+  }
 
   if (pageData == null) {
     // Giving the page no props will trigger a 404 page

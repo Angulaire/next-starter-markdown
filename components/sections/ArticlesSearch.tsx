@@ -1,11 +1,12 @@
 import { Stack, Grid, Flex, Tag, Box, Input, List, ListItem } from '@chakra-ui/react';
 import { Container } from 'components/layout/Container';
+import ArticlesGrid from 'components/sections/ArticlesGrid';
 import Fuse from 'fuse.js';
 import queryString from 'query-string';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useState } from 'react';
 
-export default function Search({ articles }) {
+export default function ArticlesSearch({ articles }) {
   const router = useRouter();
   const q: any = queryString.parse(router.asPath.split(/\?/)[1]).q
   const [query, setQuery] = useState(q ? q : '');
@@ -27,27 +28,30 @@ export default function Search({ articles }) {
   // console.log("articleResults", articleResults)
 
   return (
-    <Container>
-      <Box position="relative">
-        <Input 
-          placeholder={"Searccj"}
-          variant="flushed" 
-          value={query} 
-          onChange={handleChange}
-          sx={{
-            borderColor: 'green',
-            textAlign: 'center',
-            fontSize: ['2xl'],
-            p: 8,
-            '&::placeholder': {
-              color: 'blue',
-            },
-            '&:focus::placeholder': {
-              color: 'transparent'
-            }
-          }}
-        />
-      </Box>
-    </Container>
+    <>
+      <Container>
+        <Box position="relative">
+          <Input 
+            placeholder={"Searccj"}
+            variant="flushed" 
+            value={query} 
+            onChange={handleChange}
+            sx={{
+              borderColor: 'green',
+              textAlign: 'center',
+              fontSize: ['2xl'],
+              p: 8,
+              '&::placeholder': {
+                color: 'blue',
+              },
+              '&:focus::placeholder': {
+                color: 'transparent'
+              }
+            }}
+          />
+        </Box>
+      </Container>
+      <ArticlesGrid articles={articleResults} />
+    </>
   )
 }
