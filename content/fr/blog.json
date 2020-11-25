@@ -1,0 +1,17 @@
+{
+  "metadata": {
+    "metaTitle": "FR | metaTitle from CMS",
+    "metaDescription": "FR | metaDescription from CMS"
+  },
+  "categories": [
+    {
+      "name": "Tech"
+    },
+    {
+      "name": "Design"
+    },
+    {
+      "name": "Sales"
+    }
+  ]
+}

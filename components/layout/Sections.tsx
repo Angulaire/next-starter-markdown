@@ -30,7 +30,7 @@ export default function Sections({ sections }) {
           return (
             <Contact
               key={section.template}
-              title={section.title}
+              {...section}
             />
           )
         }
@@ -38,7 +38,7 @@ export default function Sections({ sections }) {
           return (
             <ArticlesGrid
               key={section.template} 
-              articles={section.articles}
+              {...section}
             />
           )
         }
@@ -46,7 +46,7 @@ export default function Sections({ sections }) {
           return (
             <ArticlesSearch
               key={section.template} 
-              articles={section.articles}
+              {...section}
             />
           )
         }

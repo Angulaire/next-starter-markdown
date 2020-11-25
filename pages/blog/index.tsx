@@ -1,5 +1,5 @@
 import { GetStaticProps } from 'next';
-import { getGlobalData, getAllArticles } from 'lib/api';
+import { getGlobalData, getAllArticles, getPageData } from 'lib/api';
 import Layout from 'components/layout/Layout';
 import Sections from 'components/layout/Sections';
 
@@ -29,14 +29,14 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
       'author'
     ]
   )
+  const { metadata, categories } = getPageData(locale, 'blog')
+
   const pageData = {
-    metadata: {
-      metaTitle: "metaTitle from CMS",
-      metaDescription: "metaDescription from CMS"
-    },
+    metadata,
     sections: [
       {
         template: 'articles-search',
+        categories,
         articles
       },
       {
