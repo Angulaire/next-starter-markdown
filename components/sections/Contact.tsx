@@ -23,7 +23,7 @@ export default function Contact({ title }) {
           </div>
         </Flex>
         <Flex justifyContent="center" alignItems="center">
-          <Card width="100%">
+          <Card width="100%" p="5">
             <ContactForm />
           </Card>
         </Flex>

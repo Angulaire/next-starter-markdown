@@ -1,50 +1,3 @@
-const textStyles =  {
-  h1: {
-    fontSize: ['4xl', '5xl'],
-    fontWeight: 'bold',
-    lineHeight: '110%',
-    letterSpacing: '-2%',
-  },
-  h2: {
-    fontSize: ['3xl', '4xl'],
-    fontWeight: 'semibold',
-    lineHeight: '110%',
-    letterSpacing: '-2%',
-  },
-  h3: {
-    fontSize: ['2xl', '3xl'],
-    fontWeight: 'semibold',
-    lineHeight: '110%',
-    letterSpacing: '-2%',
-  },
-  h4: {
-    fontSize: ['xl', '2xl'],
-    fontWeight: 'semibold',
-    lineHeight: '110%',
-    letterSpacing: '-2%',
-  },
-  h5: {
-    fontSize: ['lg', 'xl'],
-    fontWeight: 'semibold',
-    lineHeight: '110%',
-    letterSpacing: '-2%',
-  },
-  h6: {
-    fontSize: ['md', 'lg'],
-    fontWeight: 'semibold',
-    lineHeight: '110%',
-    letterSpacing: '-2%',
-  },
-  a: {
-    color: '#333',
-    cursor: 'pointer',
-    transition: 'all .2s ease',
-    '&:hover': {
-      color: 'black'
-    }
-  }
-}
-
 export default {
   useSystemColorMode: false,
   initialColorMode: 'light',
@@ -151,21 +104,153 @@ export default {
     modal: 10
   },
   textStyles: {
-    ...textStyles
+    h1: {
+      fontSize: ['4xl', '6xl'],
+      fontWeight: 'bold',
+      lineHeight: '110%',
+      letterSpacing: '-2%',
+    },
+    h2: {
+      fontSize: ['3xl', '4xl'],
+      fontWeight: 'semibold',
+      lineHeight: '110%',
+      letterSpacing: '-2%',
+    },
+    h3: {
+      fontSize: ['2xl', '3xl'],
+      fontWeight: 'semibold',
+      lineHeight: '110%',
+      letterSpacing: '-2%',
+    },
+    h4: {
+      fontSize: ['xl', '2xl'],
+      fontWeight: 'semibold',
+      lineHeight: '110%',
+      letterSpacing: '-2%',
+    },
+    h5: {
+      fontSize: ['lg', 'xl'],
+      fontWeight: 'semibold',
+      lineHeight: '110%',
+      letterSpacing: '-2%',
+    },
+    h6: {
+      fontSize: ['md', 'lg'],
+      fontWeight: 'semibold',
+      lineHeight: '110%',
+      letterSpacing: '-2%',
+    },
   },
   layerStyles: {
     baseDark: {
       bg: 'black',
-      'h1, h2, h3, h4, h5, h6, a, p': {
-        color: 'white'
-      }
+      color: 'white'
     },
     baseLight: {
       bg: 'white',
-      'h1, h2, h3, h4, h5, h6, a, p': {
-        color: 'black'
+      color: 'black'
+    },
+    greyLight: {
+      bg: 'gray.50',
+      color: 'black'
+    },
+    greyDark: {
+      bg: 'gray.900',
+      color: 'white'
+    }
+  },
+  components: {
+    Button: {
+      variants: {
+        solid: (props) => ({
+          bg: props.colorMode === 'dark' ? 'white' : 'black',
+          color: props.colorMode === 'dark' ? 'black' : 'white',
+          _hover: {
+            bg: props.colorMode === 'dark' ? 'white' : 'black',
+            opacity: .6
+          }
+        }),
+        outline: (props) => ({
+          border: '1px solid',
+          borderColor: props.colorMode  === 'dark' ? 'white' : 'black',
+        }),
+        link: (props) => ({
+          color: props.colorMode === 'dark' ? 'white' : 'black',
+          transition: 'all .2s ease',
+          _hover: {
+            textDecoration: 'none',
+            opacity: .6
+          }
+        })
+      },
+    },
+    Container: {
+      baseStyle: {
+        position: 'relative'
+      },
+      sizes: {
+        default: {
+          py: [20, 32],
+          px: [5, 24]
+        },
+        defaultPY0: {
+          px: [5, 24]
+        },
+        defaultPX0: {
+          py: [20, 32]
+        },
+        defaultPY50: {
+          py: [16, 16],
+          px: [5, 24]
+        },
+        defaultPT0: {
+          pb: [20, 32],
+          px: [5, 24]
+        },
+        defaultPB0: {
+          pt: [20, 32],
+          px: [5, 24]
+        },
+      },
+      variants: {
+        header: {
+          transition: '0.8s cubic-bezier(0.2, 0.8, 0.2, 1)',
+          zIndex: 'navigation',
+          position: 'fixed',
+          top: 0,
+          right: 0,
+          left: 0,
+          width: '100%',
+          height: ['60px', '80px']
+        },
+        footer: ({ colorMode }) => ({
+          bg: colorMode === 'dark' ? 'accent.800' : 'accent.100',
+          zIndex: 'navigation',
+        })
       }
     },
+    Card: {
+      baseStyle: ({ colorMode }) => ({
+        transition: 'transform .2s ease-in-out, box-shadow .2s ease-in-out',
+        bg: colorMode === 'dark' ? 'accent.800': 'white',
+        borderRadius: 'default',
+        overflow: 'hidden',
+        display: 'flex', 
+        flexDirection: 'column',
+      }),
+      variants: {
+        default: {
+          boxShadow: 'primary',
+        },
+        animated: {
+          boxShadow: 'primary',
+          _hover: {
+            boxShadow: 'primaryHover',
+            transform: 'translateY(-3px)'
+          },
+        },
+      },
+    }
   },
   styles: {
     global: ({ colorMode }) => ({
@@ -173,7 +258,6 @@ export default {
         fontSize: 'md',
         lineHeight: 'tall',
         bg: colorMode === 'dark' ? 'black' : 'white',
-        ...textStyles,
       }
     })
   }

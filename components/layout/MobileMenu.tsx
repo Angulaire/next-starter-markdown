@@ -3,6 +3,7 @@ import {
   List,
   ListItem,
   useDisclosure,
+  Button,
   Drawer,
   DrawerBody,
   DrawerFooter,
@@ -11,7 +12,6 @@ import {
   DrawerContent,
   DrawerCloseButton,
 } from '@chakra-ui/react';
-import { Button } from 'components/common/Button';
 import Link from 'next/link';
 import { AiOutlineMenu } from 'react-icons/ai';
 
@@ -20,7 +20,7 @@ export default function MobileMenu({ logo, links }) {
 
   return (
     <>
-      <Button variant="link" size="small" onClick={onOpen}>
+      <Button variant="link" onClick={onOpen}>
         <AiOutlineMenu />
       </Button>
       <Drawer

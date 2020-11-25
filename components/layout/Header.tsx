@@ -1,8 +1,7 @@
-import { useColorMode, Grid, Flex, List, ListItem } from '@chakra-ui/react';
+import { useColorMode, Button, Grid, Flex, List, ListItem } from '@chakra-ui/react';
 import { useState, useEffect } from 'react';
 import { Media } from 'components/layout/Media';
 import { Container } from 'components/layout/Container';
-import { Button } from 'components/common/Button';
 import { Angulaire } from 'components/common/Logo';
 import Link from 'next/link';
 import LangSelect from 'components/common/LangSelect';
@@ -29,7 +28,7 @@ export default function Header({ links }) {
     <Container 
       as="header" 
       variant="header" 
-      size="largePY0"
+      size="defaultPY0"
       bg={scrollTop > 20 ? (colorMode === 'dark' ? 'black' : 'white') : 'transparent'}
       style={{backdropFilter: scrollTop > 20 && 'blur(20px)'}}
     >
@@ -44,7 +43,7 @@ export default function Header({ links }) {
         <Flex as={Media} greaterThan="xs" alignItems="center" justifyContent="center">
           <List display="flex">
             {links.map(link => (
-              <ListItem key={link.url}>
+              <ListItem key={link.url} px="5">
                 <Link href={link.url}>
                   <Button variant="link">{link.text}</Button>
                 </Link>

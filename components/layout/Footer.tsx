@@ -15,7 +15,7 @@ export default function Footer({ headline, categories }) {
   };
 
   return (
-    <Container as="footer" size="large" variant="footer">
+    <Container as="footer" size="defaultPY50" variant="footer">
       <Grid gridTemplateColumns={['1fr', '3fr 5fr',]} gridGap={[10]} mb={[10, 5]}>
         <div>
           <div>

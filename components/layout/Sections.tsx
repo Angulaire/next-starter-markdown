@@ -1,7 +1,7 @@
 import Hero from 'components/sections/Hero';
+import PageHero from 'components/sections/PageHero';
 import Contact from 'components/sections/Contact';
 import Article from 'components/sections/Article';
-import ArticlesGrid from 'components/sections/ArticlesGrid';
 import ArticlesSearch from 'components/sections/ArticlesSearch';
 
 export default function Sections({ sections }) {
@@ -18,6 +18,14 @@ export default function Sections({ sections }) {
             />
           )
         }
+        if (section.template === 'page-hero'){
+          return (
+            <PageHero
+              key={section.template}
+              {...section}
+            />
+          )
+        }
         if (section.template === 'article'){
           return (
             <Article
@@ -30,14 +38,6 @@ export default function Sections({ sections }) {
           return (
             <Contact
               key={section.template}
-              {...section}
-            />
-          )
-        }
-        if (section.template === 'articles-grid'){
-          return (
-            <ArticlesGrid
-              key={section.template} 
               {...section}
             />
           )

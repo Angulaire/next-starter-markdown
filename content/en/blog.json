@@ -3,6 +3,7 @@
     "metaTitle": "EN | metaTitle from CMS",
     "metaDescription": "EN | metaDescription from CMS"
   },
+  "title": "Blog",
   "categories": [
     {
       "name": "Tech"

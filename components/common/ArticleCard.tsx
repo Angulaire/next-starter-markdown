@@ -12,7 +12,7 @@ export default function ArticleCard({ article }) {
   return (
     <Link href={`/blog/${article.slug}`} locale={lang}>
       <a>
-        <Card as="article" size="defaultP0" variant="animated">
+        <Card as="article" variant="animated" height="100%">
           <Box as="figure">
             <Image
               src={article.coverImage}
@@ -32,19 +32,19 @@ export default function ArticleCard({ article }) {
               <Heading as="h2" fontSize="xl" mb={4}>{article.title}</Heading>
               <Text>{article.description}</Text>
             </div>
-            <div>
+            <Box mt="5">
               <Tag mb="5">{article.category}</Tag>
-              <Grid gridTemplateColumns={'1fr 1fr'}>
+              <Grid gridTemplateColumns="1fr 1fr">
                 <Flex>
                   <time>{new Intl.DateTimeFormat(lang).format(new Date(article.date))}</time>
                 </Flex>
                 <Flex justifyContent="flex-end">
-                  <div>
+                  <Text>
                     {`${Math.ceil(minutes)} min. ${t['read']}`}
-                  </div>
+                  </Text>
                 </Flex>
               </Grid>
-            </div>
+            </Box>
           </Box>
         </Card>
       </a>

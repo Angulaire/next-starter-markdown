@@ -1,6 +1,5 @@
-import { Box, Grid, Flex, HStack, FormControl, FormLabel, FormErrorMessage, Input, Textarea, Alert, AlertIcon, AlertTitle, AlertDescription } from '@chakra-ui/react';
+import { Box, Grid, Flex, HStack, Button, FormControl, FormLabel, FormErrorMessage, Input, Textarea, Alert, AlertIcon, AlertTitle, AlertDescription } from '@chakra-ui/react';
 import Select from 'react-select';
-import { Button } from 'components/common/Button';
 import { useForm, Controller }from 'react-hook-form';
 import React, { useState } from 'react';
 

@@ -29,20 +29,20 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
       'author'
     ]
   )
-  const { metadata, categories } = getPageData(locale, 'blog')
+  const { metadata, title, categories } = getPageData(locale, 'blog')
 
   const pageData = {
     metadata,
     sections: [
       {
+        template: 'page-hero',
+        title
+      },
+      {
         template: 'articles-search',
         categories,
         articles
       },
-      {
-        template: 'articles-grid',
-        articles
-      }
     ]
   }
 
