@@ -1,4 +1,4 @@
-import { Stack, Grid, Flex, Tag, Box, Input, List, ListItem } from '@chakra-ui/react';
+import { Stack, Grid, Flex, Tag, Box, Input, List, Icon, ListItem } from '@chakra-ui/react';
 import { Container } from 'components/layout/Container';
 import ArticleCard from 'components/common/ArticleCard';
 import NextLink from 'next/link';
@@ -7,6 +7,7 @@ import queryString from 'query-string';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { useTranslation } from 'lib/hooks/useTranslation';
+import { AiOutlineSearch } from 'react-icons/ai';
 
 export default function Search({ categories, articles }) {
   const router = useRouter();
@@ -29,7 +30,8 @@ export default function Search({ categories, articles }) {
     threshold: 0.1
   });
   const results = fuse.search(query);
-  const articleResults = query ? results.map(article => article.item) : articles;
+  const articleQueryResults = query ? results.map(article => article.item) : articles;
+  const articleResults = cat ? articleQueryResults.filter(article => article.category.toLowerCase() === cat) : articleQueryResults
 
   function handleChange(event) {
     const value = event.target.value
@@ -37,32 +39,36 @@ export default function Search({ categories, articles }) {
     router.replace(href(value, cat), undefined, { shallow: true })
   }
 
-  // console.log("articleResults", articleResults)
-
   return (
     <Container layerStyles={{ dark: 'greyDark', light: 'greyLight' }}>
       <Box mx="auto" maxWidth={['80%', '50%']} position="absolute" left="0" right="0" top="-2rem">
-        <Input
-          key="searchbox"
-          placeholder={"Search"}
-          variant="flushed" 
-          value={query} 
-          onChange={handleChange}
-          focusBorderColor="transparent"
-          fontSize="xl"
-          p="8"
+        <Flex
           bg="white"
           borderRadius="xl"
           shadow="2xl"
-          sx={{
-            '&:focus': { boxShadow: '2xl' },
-            '&::placeholder': { color: 'accent.300' },
-            // '&:focus::placeholder': { color: 'transparent' }
-          }}
-        />
-        <List display="flex" py="5" justifyContent="space-between" mx="auto" maxWidth={['100%','60%']}>
+          alignItems="center"
+          pl="5"
+        >
+          <Icon as={AiOutlineSearch} h={6} w={6} />
+          <Input
+            key="searchbox"
+            placeholder={"Search"}
+            variant="flushed" 
+            value={query} 
+            onChange={handleChange}
+            focusBorderColor="transparent"
+            fontSize="xl"
+            py="8"
+            px="3"
+            sx={{
+              '&::placeholder': { color: 'accent.300' },
+              // '&:focus::placeholder': { color: 'transparent' }
+            }}
+          />
+        </Flex>
+        <List display="flex" py="5" justifyContent="space-between" mx="auto" maxWidth={['100%','50%']}>
           <ListItem>
-            <NextLink href={href(query, null)} shallow={true}>
+            <NextLink href={href(query, null)} shallow={true} scroll={false}>
               <button>
                 <Tag>{t['all']}</Tag>
               </button>
@@ -71,7 +77,7 @@ export default function Search({ categories, articles }) {
           {categories.map(category => {
             return (
               <ListItem>
-                <NextLink href={href(query, category.name.toLowerCase())} shallow={true}>
+                <NextLink href={href(query, category.name.toLowerCase())} shallow={true} scroll={false}>
                   <button>
                     <Tag>{category.name}</Tag>
                   </button>
