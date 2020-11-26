@@ -1,42 +1,43 @@
-import { Stack, Grid, Flex, Tag, Box, Input, List, Icon, ListItem } from '@chakra-ui/react';
+import { Stack, Grid, Flex, Tag, Box, Input, List, Icon, ListItem, ButtonGroup, Button } from '@chakra-ui/react';
 import { Container } from 'components/layout/Container';
 import ArticleCard from 'components/common/ArticleCard';
 import NextLink from 'next/link';
 import Fuse from 'fuse.js';
-import queryString from 'query-string';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
 import { useTranslation } from 'lib/hooks/useTranslation';
-import { AiOutlineSearch } from 'react-icons/ai';
+import { AiOutlineSearch, AiOutlineClose } from 'react-icons/ai';
 
-export default function Search({ categories, articles }) {
+export default function Search({ categories, articles, perPage = 3,  }) {
   const router = useRouter();
   const { t } = useTranslation()
-  const { q, cat }: any = queryString.parse(router.asPath.split(/\?/)[1])
-  const [query, setQuery] = useState(q ? q : '');
+  const { q, cat, p }: any = router.query
 
-  function href(q, cat) {
+  function href(q, p, cat) {
     const allQueries = {
       ...q && { q },
+      ...p && { p },
       ...cat && { cat }
     }
-    return (q || cat) ? { pathname: '/blog', query: allQueries } : '/blog'
+    return (q || p || cat) ? { pathname: '/blog', query: allQueries } : '/blog'
   }
 
+  // Move to page/blog/index => getServerSideProps when having a backend (e.g. headless CMS, ...)
   const fuse = new Fuse(articles, {
     keys: [ 'title' ],
     includeScore: true,
     includeMatches: true,
     threshold: 0.1
   });
-  const results = fuse.search(query);
-  const articleQueryResults = query ? results.map(article => article.item) : articles;
-  const articleResults = cat ? articleQueryResults.filter(article => article.category.toLowerCase() === cat) : articleQueryResults
+  const results = fuse.search(q ? q : '');
+  const articleResults = q ? results.map(article => article.item) : articles;
+  const totalCount = articleResults.length
+  const pageCount = Math.ceil(totalCount / perPage);
+  const initialPage = p ? (p * perPage - perPage) : 0
+  const paginatedResults = articleResults.slice(initialPage, initialPage + perPage)
 
   function handleChange(event) {
     const value = event.target.value
-    setQuery(value);
-    router.replace(href(value, cat), undefined, { shallow: true })
+    router.replace(href(value, null, cat))
   }
 
   return (
@@ -47,14 +48,14 @@ export default function Search({ categories, articles }) {
           borderRadius="xl"
           shadow="2xl"
           alignItems="center"
-          pl="5"
+          px="5"
         >
           <Icon as={AiOutlineSearch} h={6} w={6} />
           <Input
             key="searchbox"
             placeholder={"Search"}
             variant="flushed" 
-            value={query} 
+            value={q ? q : ''} 
             onChange={handleChange}
             focusBorderColor="transparent"
             fontSize="xl"
@@ -65,10 +66,17 @@ export default function Search({ categories, articles }) {
               // '&:focus::placeholder': { color: 'transparent' }
             }}
           />
+          {q &&
+            <NextLink href={href(null, null, cat)} scroll={false}>
+              <button>
+                <Icon as={AiOutlineClose} h={6} w={6} />
+              </button>
+            </NextLink>
+          }
         </Flex>
         <List display="flex" py="5" justifyContent="space-between" mx="auto" maxWidth={['100%','50%']}>
           <ListItem>
-            <NextLink href={href(query, null)} shallow={true} scroll={false}>
+            <NextLink href={href(q, null, null)} scroll={false}>
               <button>
                 <Tag>{t['all']}</Tag>
               </button>
@@ -77,7 +85,7 @@ export default function Search({ categories, articles }) {
           {categories.map(category => {
             return (
               <ListItem>
-                <NextLink href={href(query, category.name.toLowerCase())} shallow={true} scroll={false}>
+                <NextLink href={href(q, null, category.value)} scroll={false}>
                   <button>
                     <Tag>{category.name}</Tag>
                   </button>
@@ -87,12 +95,23 @@ export default function Search({ categories, articles }) {
           })}
         </List>
       </Box>
-      <Results articles={articleResults} />
+      <Results articles={paginatedResults} />
+      {totalCount > perPage &&
+        <Flex justifyContent="center" mt="5">
+          <ButtonGroup spacing={6}>
+            {[...Array(pageCount)].map((_, i) => (
+              <NextLink href={href(q, i === 0 ? null : i + 1, cat)} scroll={false}>
+                <Button>{i + 1}</Button>
+              </NextLink>
+            ))}
+          </ButtonGroup>
+        </Flex>
+      }
     </Container>
   )
 }
 
-function Results( { articles }) {
+function Results({ articles }) {
   return (
     <Grid gridTemplateColumns={['1fr', 'repeat(3, 1fr)']} gridGap="5" mt={[10, 0]}>
       {articles.length > 0 && articles.map(article => (

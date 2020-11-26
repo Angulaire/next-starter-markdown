@@ -1,4 +1,4 @@
-import { GetStaticProps } from 'next';
+import { GetServerSideProps } from 'next';
 import { getGlobalData, getAllArticles, getPageData } from 'lib/api';
 import Layout from 'components/layout/Layout';
 import Sections from 'components/layout/Sections';
@@ -14,7 +14,8 @@ export default function BlogPage({ globalData, pageData }) {
   )
 }
 
-export const getStaticProps: GetStaticProps = async ({ locale }) => {
+export const getServerSideProps: GetServerSideProps = async ({ query, locale }) => {
+  const { cat } = query
 
   const articles = getAllArticles(
     locale,
@@ -27,7 +28,8 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
       'date',
       'category',
       'author'
-    ]
+    ],
+    cat
   )
   const { metadata, title, categories } = getPageData(locale, 'blog')
 
@@ -41,7 +43,7 @@ export const getStaticProps: GetStaticProps = async ({ locale }) => {
       {
         template: 'articles-search',
         categories,
-        articles
+        articles,
       },
     ]
   }

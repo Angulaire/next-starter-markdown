@@ -6,13 +6,16 @@
   "title": "Blog",
   "categories": [
     {
+      "value": "tech",
       "name": "Tech"
     },
     {
+      "value": "design",
       "name": "Design"
     },
     {
-      "name": "Ventes"
+      "value": "sales",
+      "name": "Sales"
     }
   ]
 }
