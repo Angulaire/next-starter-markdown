@@ -7,7 +7,7 @@ import { useRouter } from 'next/router';
 import { useTranslation } from 'lib/hooks/useTranslation';
 import { AiOutlineSearch, AiOutlineClose } from 'react-icons/ai';
 
-export default function Search({ categories, articles, perPage = 3,  }) {
+export default function ArticlesSearch({ categories, articles, perPage = 3,  }) {
   const router = useRouter();
   const { t } = useTranslation()
   const { q, cat, p }: any = router.query
@@ -115,7 +115,7 @@ function Results({ articles }) {
   return (
     <Grid gridTemplateColumns={['1fr', 'repeat(3, 1fr)']} gridGap="5" mt={[10, 0]}>
       {articles.length > 0 && articles.map(article => (
-        <ArticleCard key={article.slug} article={article} />
+        <ArticleCard key={article.slug} {...article} />
       ))}
     </Grid>
   )

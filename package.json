@@ -23,15 +23,17 @@
     "framer-motion": "^2.9.4",
     "fuse.js": "^6.4.3",
     "gray-matter": "^4.0.2",
-    "next": "latest",
+    "next": "^10.0.3",
     "next-seo": "^4.7.1",
     "react": "latest",
     "react-dom": "latest",
     "react-hook-form": "^6.0.4",
     "react-icons": "^3.10.0",
+    "react-id-swiper": "^4.0.0",
     "react-markdown": "^4.1.0",
     "react-select": "^3.1.0",
-    "reading-time": "^1.2.0"
+    "reading-time": "^1.2.0",
+    "swiper": "6.3.5"
   },
   "devDependencies": {
     "@types/node": "^14.0.14",

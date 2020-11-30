@@ -2,7 +2,8 @@ import Hero from 'components/sections/hero';
 import PageHero from 'components/sections/page-hero';
 import Contact from 'components/sections/contact';
 import Article from 'components/sections/article';
-import ArticlesSearch from 'components/sections/article-search';
+import ArticlesSearch from 'components/sections/articles/search';
+import ArticlesCarousel from 'components/sections/articles/carousel';
 
 export default function Sections({ sections }) {
   return (
@@ -45,6 +46,14 @@ export default function Sections({ sections }) {
         if (section.template === 'articles-search'){
           return (
             <ArticlesSearch
+              key={section.template} 
+              {...section}
+            />
+          )
+        }
+        if (section.template === 'articles-carousel'){
+          return (
+            <ArticlesCarousel
               key={section.template} 
               {...section}
             />

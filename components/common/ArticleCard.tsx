@@ -2,21 +2,20 @@ import { Box, Grid, Flex, Heading, Text, Tag } from '@chakra-ui/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useTranslation } from 'lib/hooks/useTranslation';
-import readingTime from 'reading-time';
 import { Card } from 'components/common/Card';
 
-export default function ArticleCard({ article }) {
-  const { t, lang } = useTranslation()
-  const { minutes }= readingTime(article.content);
+export default function ArticleCard({ slug, title, description, coverImage, category, date, minReading }) {
+  const { t, lang, locale } = useTranslation()
+  const localeDatePublished = new Date(date).toLocaleDateString(locale, { year: 'numeric', month: 'short', day: 'numeric' })
 
   return (
-    <Link href={`/blog/${article.slug}`} locale={lang}>
+    <Link href={`/blog/${slug}`} locale={lang}>
       <a>
         <Card as="article" variant="animated" height="100%">
           <Box as="figure">
             <Image
-              src={article.coverImage}
-              alt={`Cover image for ${article.title}`}
+              src={coverImage}
+              alt={`Cover image for ${title}`}
               width={1200}
               height={800}
             />
@@ -29,18 +28,18 @@ export default function ArticleCard({ article }) {
             flex: 1
           }}>
             <div>
-              <Heading as="h2" fontSize="xl" mb={4}>{article.title}</Heading>
-              <Text>{article.description}</Text>
+              <Heading as="h2" fontSize="xl" mb={4}>{title}</Heading>
+              <Text>{description}</Text>
             </div>
             <Box mt="5">
-              <Tag mb="5">{article.category}</Tag>
+              <Tag mb="5">{category}</Tag>
               <Grid gridTemplateColumns="1fr 1fr">
                 <Flex>
-                  <time>{new Intl.DateTimeFormat(lang).format(new Date(article.date))}</time>
+                  <time>{localeDatePublished}</time>
                 </Flex>
                 <Flex justifyContent="flex-end">
                   <Text>
-                    {`${Math.ceil(minutes)} min. ${t['read']}`}
+                    {`${minReading} min. ${t['read']}`}
                   </Text>
                 </Flex>
               </Grid>

@@ -27,11 +27,12 @@ export const getServerSideProps: GetServerSideProps = async ({ query, locale }) 
       'content',
       'date',
       'category',
-      'author'
+      'author',
+      'minReading'
     ],
     cat
   )
-  const { metadata, title, categories } = getPageData(locale, 'blog')
+  const { metadata, title, categories, articlesCarouselTitle } = getPageData(locale, 'blog')
 
   const pageData = {
     metadata,
@@ -45,6 +46,11 @@ export const getServerSideProps: GetServerSideProps = async ({ query, locale }) 
         categories,
         articles,
       },
+      {
+        template: 'articles-carousel',
+        title: articlesCarouselTitle,
+        articles,
+      }
     ]
   }
 
