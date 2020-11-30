@@ -52,11 +52,17 @@ export default function Header({ links }) {
           </List>
         </Flex>
         <Flex alignItems="center" justifyContent="flex-end">
-          <ColorModeSwitcher />
-          <LangSelect />
-          <Media at="xs">
-            <MobileMenu logo={<Logo />} links={links}/>
-          </Media>
+          <List display="flex">
+            <ListItem mr="5">
+              <ColorModeSwitcher />
+            </ListItem>
+            <ListItem>
+              <LangSelect />
+            </ListItem>
+            <ListItem as={Media} at="xs">
+              <MobileMenu logo={<Logo />} links={links}/>
+            </ListItem>
+          </List>
         </Flex>
       </Grid>
     </Container>

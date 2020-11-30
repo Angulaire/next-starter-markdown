@@ -1,5 +1,33 @@
 {
   "home": "Home",
   "read": "read",
-  "all": "All"
+  "all": "All",
+  "form": {
+    "input": {
+      "firstName": "First name",
+      "lastName": "Last name",
+      "email": "Email",
+      "employeesNumber": "Number of Employees",
+      "phone": "Phone",
+      "organization": "Organization",
+      "message": "Message"
+    },
+    "status": {
+      "submitting": "Sending...",
+      "submitted": "Sent"
+    },
+    "error": {
+      "required": "Please enter your",
+      "valid": "Please enter a valid {{input}}"
+    },
+    "submit": {
+      "demo": "Request a demo"
+    },
+    "alert": {
+      "success": {
+        "title": "Message sent successfully!",
+        "description": "Thanks for your message. Our team will get back to you soon."
+      }
+    }
+  }
 }

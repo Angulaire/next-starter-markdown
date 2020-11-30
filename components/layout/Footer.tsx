@@ -1,7 +1,7 @@
-import { Grid, Flex, IconButton, Text, List, ListItem } from '@chakra-ui/react';
+import { Grid, Flex, Heading, Text, List, ListItem, Link, Icon } from '@chakra-ui/react';
 import { Angulaire } from 'components/common/Logo';
 import { Container }from 'components/layout/Container';
-import Link from 'next/link';
+import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 import { AiFillFacebook, AiFillTwitterSquare, AiFillLinkedin } from 'react-icons/ai';
 import siteConfig from 'siteconfig.json';
@@ -26,13 +26,13 @@ export default function Footer({ headline, categories }) {
         <Grid gridTemplateColumns={['repeat(2, 1fr)', 'repeat(3, 1fr)',]} gridGap={4}>
           {categories.map((category, index) => (
             <div key={index}>
-              <Text as="h6" mb="5">{category.title}</Text>
+              <Heading as="h6" textStyle="h6" mb="5">{category.title}</Heading>
               <List>
                 {category.links.map((link, i) => (
                   <ListItem key={i} mb="1">
-                    <Link href={link.url} locale={locale}>
-                      <a>{link.text}</a>
-                    </Link>
+                    <NextLink href={link.url} locale={locale}>
+                      <Link>{link.text}</Link>
+                    </NextLink>
                   </ListItem>
                 ))}
               </List>
@@ -51,7 +51,7 @@ export default function Footer({ headline, categories }) {
               return (
                 <ListItem key={i}>
                   <a href={social.url} target="_blank" rel="nofollow">
-                    <Logo fontSize="24px"/>
+                    <Icon as={Logo} h={6} w={6} />
                   </a>
                 </ListItem>
               )

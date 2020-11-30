@@ -1,5 +1,33 @@
 {
   "home": "Accueil",
   "read": "de lecture",
-  "all": "Tous"
+  "all": "Tous",
+  "form": {
+    "input": {
+      "firstName": "Prénom",
+      "lastName": "Nom",
+      "email": "Email",
+      "employeesNumber": "Nombre d'employés",
+      "phone": "Téléphone",
+      "organization": "Organisation",
+      "message": "Message"
+    },
+    "status": {
+      "submitting": "Envoi en cours...",
+      "submitted": "Envoyé"
+    },
+    "error": {
+      "required": "Merci d'entrer votre",
+      "valid": "Merci d'entrer un {{input}} valide"
+    },
+    "submit": {
+      "demo": "Demander un demo"
+    },
+    "alert": {
+      "success": {
+        "title": "Message envoyé!",
+        "description": "Merci pour votre message. Notre équipe reviendra vers vous rapidement."
+      }
+    }
+  }
 }

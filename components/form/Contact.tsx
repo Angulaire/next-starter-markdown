@@ -1,9 +1,11 @@
 import { Box, Grid, Flex, HStack, Button, FormControl, FormLabel, FormErrorMessage, Input, Textarea, Alert, AlertIcon, AlertTitle, AlertDescription } from '@chakra-ui/react';
-import Select from 'react-select';
+import Select from 'components/common/Select';
 import { useForm, Controller }from 'react-hook-form';
+import { useTranslation } from 'lib/hooks/useTranslation';
 import React, { useState } from 'react';
 
 export default function Contact() {
+  const { t } = useTranslation()
   const [status, setStatus] = useState({
     submitted: false,
     submitting: false,
@@ -41,18 +43,15 @@ export default function Contact() {
     handleResponse(res.status, text)
   };
 
-  const ItemExplain = {
-    color: 'red',
-    transition: 'color 0.3s cubic-bezier(0.215, 0.61, 0.355, 1)'
-  }
-
   return (
     <>
       {!status.submitted ? (
         <form onSubmit={handleSubmit(onSubmit)}>
           <HStack spacing="24px">
             <FormControl isInvalid={errors.firstName}>
-              <FormLabel htmlFor="firstName">First Name</FormLabel>
+              <FormLabel htmlFor="firstName">
+                {t.form.input['firstName']}
+              </FormLabel>
               <Input
                 name="firstName"
                 type="text"
@@ -60,11 +59,13 @@ export default function Contact() {
                 ref={register({ required: true, maxLength: 80 })}
               />
               <FormErrorMessage>
-                {errors.firstName && "Please enter your first name"}
+                {errors.firstName && `${t.form.error['required']} ${t.form.input['firstName'].toLowerCase()}`}
               </FormErrorMessage>
             </FormControl>
             <FormControl isInvalid={errors.lastName}>
-              <FormLabel htmlFor="lastName">Last Name</FormLabel>
+              <FormLabel htmlFor="lastName">
+                {t.form.input['lastName']}
+              </FormLabel>
               <Input
                 name="lastName"
                 type="text"
@@ -72,12 +73,14 @@ export default function Contact() {
                 ref={register({ required: true, maxLength: 80 })}
               />
               <FormErrorMessage>
-                {errors.lastName && "Please enter your last name"}
+                {errors.lastName && `${t.form.error['required']} ${t.form.input['lastName'].toLowerCase()}`}
               </FormErrorMessage>
             </FormControl>
           </HStack>
           <FormControl isInvalid={errors.email}>
-            <FormLabel htmlFor="email">Email</FormLabel>
+            <FormLabel htmlFor="email">
+              {t.form.input['email']}
+            </FormLabel>
             <Input
               name="email"
               type="email"
@@ -88,12 +91,14 @@ export default function Contact() {
               })}
             />
             <FormErrorMessage>
-              {errors.email && errors.email.type === "required" && "Please enter your email"}
-              {errors.email && errors.email.type === "pattern" && "Please enter a valid email"}
+              {errors.email && errors.email.type === "required" && `${t.form.error['required']} ${t.form.input['email'].toLowerCase()}`}
+              {errors.email && errors.email.type === "pattern" && t.form.error['valid'].replace("{{input}}", t.form.input['email'].toLowerCase())}
             </FormErrorMessage>
           </FormControl>
           <FormControl isInvalid={errors.employeesNumber}>
-            <FormLabel htmlFor="employeesNumber">Number of Employees</FormLabel>
+            <FormLabel htmlFor="employeesNumber">
+              {t.form.input['employeesNumber']}
+            </FormLabel>
             <Controller
               name="employeesNumber"
               as={Select}
@@ -109,11 +114,13 @@ export default function Contact() {
               isSearchable={false}
             />
             <FormErrorMessage>
-              {errors.employeesNumber && "Please enter your organization employees number"}
+              {errors.employeesNumber && `${t.form.error['required']} ${t.form.input['employeesNumber'].toLowerCase()}`}
             </FormErrorMessage>
           </FormControl>
           <FormControl isInvalid={errors.phone}>
-            <FormLabel htmlFor="phone">Phone</FormLabel>
+            <FormLabel htmlFor="phone">
+              {t.form.input['phone']}
+            </FormLabel>
             <Input
               name="phone"
               type="phone"
@@ -126,12 +133,14 @@ export default function Contact() {
               })}
             />
             <FormErrorMessage>
-              {errors.phone && errors.phone.type === 'validNumber' && "Please enter a valid phone number"}
-              {errors.phone && errors.phone.type === 'required' && "Please enter a phone number"}
+              {errors.phone && errors.phone.type === 'validNumber' && t.form.error['valid'].replace("{{input}}", t.form.input['phone'].toLowerCase())}
+              {errors.phone && errors.phone.type === 'required' && `${t.form.error['required']} ${t.form.input['phone'].toLowerCase()}`}
             </FormErrorMessage>
           </FormControl>
           <FormControl isInvalid={errors.organization}>
-            <FormLabel htmlFor="organization">Organization</FormLabel>
+            <FormLabel htmlFor="organization">
+              {t.form.input['organization']}
+            </FormLabel>
             <Input
               name="organization"
               type="text"
@@ -139,27 +148,29 @@ export default function Contact() {
               ref={register({ required: true })}
             />
             <FormErrorMessage>
-              {errors.organization && "Please enter your organization name"}
+              {errors.organization && `${t.form.error['required']} ${t.form.input['organization'].toLowerCase()}`}
             </FormErrorMessage>
           </FormControl>
           <FormControl isInvalid={errors.message}>
-            <FormLabel htmlFor="message">Message</FormLabel>
+            <FormLabel htmlFor="message">
+              {t.form.input['message']}
+            </FormLabel>
             <Textarea
               name="message"
               rows={4} 
               ref={register({ required: true  })}
             />
             <FormErrorMessage>
-              {errors.needs && "Please enter your message"}
+              {errors.message && `${t.form.error['required']} ${t.form.input['message'].toLowerCase()}`}
             </FormErrorMessage>
           </FormControl>
           <Box mt="5">
             <Button onClick={handleSubmit(onSubmit)} width="100%">
               {!status.submitting
                 ? !status.submitted
-                  ? 'Request a demo'
-                  : 'Request sent'
-                : 'Sending...'}
+                  ? t.form.submit['demo']
+                  : t.form.status['submitted']
+                : t.form.status['submitting']}
             </Button>
           </Box>
         </form>
@@ -174,10 +185,10 @@ export default function Contact() {
         >
           <AlertIcon boxSize="40px" mr={0} />
           <AlertTitle mt={4} mb={1} fontSize="lg">
-            Application submitted!
+            {t.form.alert.success["title"]}
           </AlertTitle>
           <AlertDescription maxWidth="sm">
-            Thanks for submitting your application. Our team will get back to you soon.
+            {t.form.alert.success["description"]}
           </AlertDescription>
         </Alert>
       )}

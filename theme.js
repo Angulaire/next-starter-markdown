@@ -229,6 +229,11 @@ export default {
         })
       }
     },
+    Select: {
+      baseStyle: {
+        borderRadius: 'default',
+      }
+    },
     Card: {
       baseStyle: ({ colorMode }) => ({
         transition: 'transform .2s ease-in-out, box-shadow .2s ease-in-out',

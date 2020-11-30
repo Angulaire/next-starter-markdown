@@ -1,65 +1,50 @@
-import { Box, useStyleConfig, useTheme } from '@chakra-ui/react';
+import { Box, useStyleConfig, useTheme, useColorModeValue } from '@chakra-ui/react';
 import ReactSelect from 'react-select';
 
-const styleConfig = {
-  baseStyle: {
-    borderRadius: 'default'
-  }
-}
-
-export default function Select({ ...rest }) {
+export default function Select({ size = "md", variant = "default" , ...rest }) {
   const theme = useTheme();
+  const styles = useStyleConfig("Select", { size, variant })
+
+  const color = useColorModeValue("black", "white")
+  const placholderColor = useColorModeValue(theme.colors.gray['400'], "rgba(255, 255, 255, 0.22)")
+  const bg = useColorModeValue("white", theme.colors.accent['800'])
+  const borderColor = useColorModeValue(theme.colors.gray['200'], "rgba(255, 255, 255, 0.16)")
+  const borderColorHover = useColorModeValue(theme.colors.gray['300'], "rgba(255, 255, 255, 0.30)")
 
   const defaultStyles = {
-    control: base => ({
+    control: (base, state) => ({
       ...base,
+      backgroundColor: 'transparent',
+      borderColor: variant === 'link' ? 'transparent' : borderColor,
       cursor: 'pointer',
-      fontSize: theme.fontSizes.sm,
-      border: 'none',
-      boxShadow: 'none',
-      minHeight: '28px',
-      backgroundColor: theme.colors.accent2,
-      borderRadius: '20px',
-      padding: '0 8px',
-      width: '75px'
+      boxShadow: variant === 'link' ? 'none' : state.isFocused && `0 0 0 2px ${theme.colors.blue['600']}`,
+      '&:hover': {
+        borderColor: variant === 'link' ? 'transparent' : borderColorHover
+      },
     }),
-    valueContainer: base => ({
-      ...base,
-      justifyContent: 'flex-end',
-    }),
-    indicatorsContainer: () => ({
-      height: 'auto'
+    singleValue: (provided, state) => ({
+      color: placholderColor
     }),
     indicatorSeparator: () => ({
       display: 'none'
     }),
     dropdownIndicator: (base, state) => ({
       ...base,
-      padding: '0px',
+      color: borderColor,
       transition: 'all .2s ease',
-      transform: state.selectProps.menuIsOpen ? 'rotate(180deg)' : null
-    }),
-    singleValue: (base, state) => ({
-      color: theme.colors.accent5,
+      transform: state.selectProps.menuIsOpen && 'rotate(180deg)'
     }),
     menu: (base, state) => ({
       ...base,
-      color: theme.colors.accent5,
-      background: 'white',
-      textAlign: 'left'
+      backgroundColor: bg
     }),
     option: (base, state) => ({
       ...base,
       cursor: 'pointer',
-      fontSize: theme.fontSizes.sm,
-      color: state.isSelected ? theme.colors.text : theme.colors.accent5,
-      background: state.isSelected ? theme.colors.redTransparent : 'transparent',
+      background: state.isSelected ? borderColor : 'transparent',
+      color
     })
   };
-
-  const styles: any = useStyleConfig("Select", {
-    styleConfig,
-  })
 
   return <Box as={ReactSelect} styles={defaultStyles} sx={styles} {...rest} />
 }

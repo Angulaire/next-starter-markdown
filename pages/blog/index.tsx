@@ -1,7 +1,7 @@
 import { GetServerSideProps } from 'next';
 import { getGlobalData, getAllArticles, getPageData } from 'lib/api';
 import Layout from 'components/layout/Layout';
-import Sections from 'components/layout/Sections';
+import Sections from 'components/sections';
 
 export default function BlogPage({ globalData, pageData }) {
   return (

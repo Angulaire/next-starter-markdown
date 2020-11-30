@@ -3,7 +3,7 @@ import { getGlobalData, getPageData, getAllArticles, getArticleBySlug } from 'li
 import { useRouter } from 'next/router';
 import ErrorPage from 'next/error';
 import Layout from 'components/layout/Layout';
-import Sections from 'components/layout/Sections';
+import Sections from 'components/sections';
 
 export default function DynamicPage({ globalData, pageData }) {
   const router = useRouter()

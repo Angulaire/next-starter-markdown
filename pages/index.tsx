@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next';
 import { getGlobalData } from 'lib/api';
 import Layout from 'components/layout/Layout';
-import Hero from 'components/sections/Hero';
+import Sections from 'components/sections';
 
 export default function Homepage({ globalData, pageData }) {
 
@@ -10,18 +10,7 @@ export default function Homepage({ globalData, pageData }) {
       metadata={pageData.metadata}
       globalData={globalData}
     >
-      {pageData.sections.map(section => {
-        if (section.template === 'hero'){
-          return (
-            <Hero 
-              key={section.template}
-              title={section.title}
-              description={section.description}
-              image={section.image}
-            />
-          )
-        }
-      })}
+      <Sections sections={pageData.sections} />
     </Layout>
   )
 }

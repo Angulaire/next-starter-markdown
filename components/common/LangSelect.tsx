@@ -20,6 +20,8 @@ const LangSelect = () => {
       defaultValue={router.locale}
       placeholder={locale.toUpperCase()}
       options={options}
+      variant="link"
+      width="80px"
     />
   )
 }

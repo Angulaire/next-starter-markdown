@@ -1,8 +1,8 @@
-import Hero from 'components/sections/Hero';
-import PageHero from 'components/sections/PageHero';
-import Contact from 'components/sections/Contact';
-import Article from 'components/sections/Article';
-import ArticlesSearch from 'components/sections/ArticlesSearch';
+import Hero from 'components/sections/hero';
+import PageHero from 'components/sections/page-hero';
+import Contact from 'components/sections/contact';
+import Article from 'components/sections/article';
+import ArticlesSearch from 'components/sections/article-search';
 
 export default function Sections({ sections }) {
   return (
