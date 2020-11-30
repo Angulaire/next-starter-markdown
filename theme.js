@@ -215,7 +215,7 @@ export default {
       variants: {
         header: {
           transition: '0.8s cubic-bezier(0.2, 0.8, 0.2, 1)',
-          zIndex: 'navigation',
+          zIndex: 'sticky',
           position: 'fixed',
           top: 0,
           right: 0,
@@ -225,7 +225,7 @@ export default {
         },
         footer: ({ colorMode }) => ({
           bg: colorMode === 'dark' ? 'accent.800' : 'accent.100',
-          zIndex: 'navigation',
+          zIndex: 'sticky',
         })
       }
     },

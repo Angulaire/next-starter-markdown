@@ -7,7 +7,7 @@ import ArticleCard from 'components/common/ArticleCard';
 import { FiChevronRight, FiChevronLeft } from 'react-icons/fi';
 import NextLink from 'next/link';
 
-export default function ArticlesCarousel({ title, articles, button = null }) {
+export default function ArticlesCarousel({ title, articles, button = null, layerStyles }) {
   const swiperRef = useRef(null);
   const [progress, setProgress] = useState(0);
 
@@ -53,9 +53,13 @@ export default function ArticlesCarousel({ title, articles, button = null }) {
     }
   }
 
+  if (articles.length < 1) {
+    return null
+  }
+
   return (
-    <Container size="defaultPX0">
-      <Container as="div" size="defaultPY0">
+    <Container size="defaultPX0" layerStyles={layerStyles}>
+      <Container as="div" size="defaultPY0" layerStyles={layerStyles}>
         <Heading as="h2" textStyle="h2">{title}</Heading>
       </Container>
       <Box sx={stylesSwiper}>

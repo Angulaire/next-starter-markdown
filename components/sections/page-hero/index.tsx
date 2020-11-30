@@ -1,18 +1,23 @@
 import { Box, Flex, Heading, Text } from '@chakra-ui/react';
 import { Container } from 'components/layout/Container';
 
-export default function PageHero({ headline, title, description }) {
+type IProps = {
+  headline?: string | React.ReactNode;
+  title: string;
+  description?: string;
+}
+
+export default function PageHero({ headline, title, description }: IProps) {
   return (
-    <Container>
+    <Container size="defaultPY50">
       <Flex alignItems="center" justifyContent="center">
         <Box>
-          {headline &&
-            <Text>{headline}</Text>
+          {typeof headline === 'string'
+            ? <Text>{headline}</Text>
+            : headline
           }
-          <Heading as="h1" textStyle="h1">{title}</Heading>
-          {description &&
-            <Text>{description}</Text>
-          }
+          <Heading as="h1" textStyle="h1" textAlign="center" my="5">{title}</Heading>
+          <Text>{description}</Text>
         </Box>
       </Flex>
     </Container>

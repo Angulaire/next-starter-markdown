@@ -32,6 +32,7 @@
     "react-id-swiper": "^4.0.0",
     "react-markdown": "^4.1.0",
     "react-select": "^3.1.0",
+    "react-share": "^4.3.1",
     "reading-time": "^1.2.0",
     "swiper": "6.3.5"
   },

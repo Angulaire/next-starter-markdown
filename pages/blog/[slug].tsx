@@ -44,14 +44,37 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
     slug, 
     [
       'title',
+      'description',
       'date',
       'slug',
       'content',
       'coverImage',
       'category',
-      'author'
+      'author',
+      'minReading'
     ]
   )
+
+  const relatedArticles = getAllArticles(
+    locale,
+    [
+      'title',
+      'description',
+      'coverImage',
+      'slug',
+      'content',
+      'date',
+      'category',
+      'author',
+      'minReading'
+    ],
+    article.category.toLowerCase()
+  ).filter(article => article.slug !== slug)
+
+  const articlesCarouselTitle = {
+    en: "Let's continue",
+    fr: "On continue?"
+  }
 
   const pageData = {
     metadata: {
@@ -62,6 +85,12 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
       {
         template: 'article',
         article
+      },
+      {
+        template: 'articles-carousel',
+        articles: relatedArticles,
+        title: articlesCarouselTitle[locale],
+        layerStyles: { dark: 'greyDark', light: 'greyLight' }
       }
     ]
   }

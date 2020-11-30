@@ -13,9 +13,7 @@ export default function Sections({ sections }) {
           return (
             <Hero 
               key={section.template}
-              title={section.title}
-              description={section.description}
-              image={section.image}
+              {...section}
             />
           )
         }

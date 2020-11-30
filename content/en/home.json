@@ -1,10 +1,29 @@
 {
-  "metaTitle": "Angulaire | Our work is serious, we are not",
-  "metaDescription": "We build products close to our hearts, and put everything we’ve got into them, so the final products we deliver speak for themselves.",
+  "metadata": {
+    "metaTitle": "Angulaire | Our work is serious, we are not",
+    "metaDescription": "We build products close to our hearts, and put everything we’ve got into them, so the final products we deliver speak for themselves.",
+    "ogImage": ""
+  },
   "sections": [
     {
       "template": "hero",
-      "title": "Quickstart awesome websites"
+      "title": "Quickstart awesome websites",
+      "image": {
+        "url": "/forest.jpg",
+        "alt": "Forest with trees"
+      },
+      "buttons": [
+        {
+          "url": "/contact",
+          "text": "Request a demo",
+          "variant": "solid"
+        },
+        {
+          "url": "/blog",
+          "text": "Read blog",
+          "variant": "outline"
+        }
+      ]
     }
   ]
 }

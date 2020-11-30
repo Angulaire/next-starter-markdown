@@ -1,28 +1,34 @@
-import { Grid, Flex, Heading, Text } from '@chakra-ui/react';
-import { Card } from 'components/common/Card';
-import { useRouter } from 'next/router';
+import { Grid, Flex, Box, Heading, Text, Button, ButtonGroup } from '@chakra-ui/react';
 import Image from 'next/image';
+import NextLink from 'next/link';
 import { Container } from 'components/layout/Container';
 
-export default function Hero({ title, description, image }) {
-  const { locale } = useRouter()
-
+export default function Hero({ title, description, image, buttons }) {
   return (
     <Container>
-      <Grid gridTemplateColumns={['1fr', '1fr 1fr']} gridGap="5">
+      <Grid gridTemplateColumns={['1fr', '4fr 3fr']} gridGap="10">
         <Flex alignItems="center" justifyContent="flex-start">
-          <Heading as="h1">{title[locale]}</Heading>
-          <Text>{description}</Text>
+          <Box>
+            <Heading as="h1" textStyle="h1">{title}</Heading>
+            <Text>{description}</Text>
+            <ButtonGroup spacing="5" mt="10">
+              {buttons.map(button => (
+                <NextLink key={button.url} href={button.url}>
+                  <Button variant={button.variant}>{button.text}</Button>
+                </NextLink>
+              ))}
+            </ButtonGroup>
+          </Box>
         </Flex>
         <Flex alignItems="center" justifyContent="center">
-          <Card width="100%" size="defaultP0">
+          <figure>
             <Image
-              src="/forest.jpg"
-              alt="Forest with trees"
+              src={image.url}
+              alt={image.alt}
               width={5324}
               height={3547}
             />
-          </Card>
+          </figure>
         </Flex>
       </Grid>
     </Container>

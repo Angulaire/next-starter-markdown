@@ -1,5 +1,5 @@
 import { GetStaticProps } from 'next';
-import { getGlobalData } from 'lib/api';
+import { getPageData, getGlobalData } from 'lib/api';
 import Layout from 'components/layout/Layout';
 import Sections from 'components/sections';
 
@@ -17,22 +17,7 @@ export default function Homepage({ globalData, pageData }) {
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => {
 
-  let pageData = null
-  pageData = {
-    metadata: {
-      metaTitle: "metaTitle from CMS",
-      metaDescription: "metaDescription from CMS"
-    },
-    sections: [
-      {
-        template: 'hero',
-        title: {
-          en: "Quickstart awesome websites",
-          fr: "Démarrez rapidement de nouveaux site"
-        }
-      }
-    ]
-  }
+  const pageData = getPageData(locale, 'home')
 
   const globalData = await getGlobalData(locale)
 
